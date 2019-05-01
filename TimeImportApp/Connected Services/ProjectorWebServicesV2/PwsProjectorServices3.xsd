@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://projectorpsa.com/CommonServices/" elementFormDefault="qualified" targetNamespace="http://projectorpsa.com/CommonServices/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd4" namespace="http://projectorpsa.com/DataContracts/Shared/Common/" />
+  <xs:complexType name="PwsResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://projectorpsa.com/DataContracts/Shared/Common/" base="q1:PwsBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Messages" nillable="true" type="q1:ArrayOfPwsMessage" />
+          <xs:element minOccurs="0" name="ResponseId" type="xs:int" />
+          <xs:element minOccurs="0" name="Status" type="q1:RequestStatus" />
+          <xs:element minOccurs="0" name="ServerTimestampUtc" nillable="true" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsResponse" nillable="true" type="tns:PwsResponse" />
+  <xs:complexType name="ArrayOfPwsCostCenterCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PwsCostCenterCriteria" nillable="true" type="tns:PwsCostCenterCriteria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPwsCostCenterCriteria" nillable="true" type="tns:ArrayOfPwsCostCenterCriteria" />
+  <xs:complexType name="PwsCostCenterCriteria">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://projectorpsa.com/DataContracts/Shared/Common/" base="q2:PwsBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CascadeFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CostCenterIdentity" nillable="true" type="q2:PwsCostCenterRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsCostCenterCriteria" nillable="true" type="tns:PwsCostCenterCriteria" />
+</xs:schema>

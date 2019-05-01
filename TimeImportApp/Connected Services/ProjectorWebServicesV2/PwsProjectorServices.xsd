@@ -1,0 +1,2068 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://projectorpsa.com/PwsProjectorServices/" elementFormDefault="qualified" targetNamespace="http://projectorpsa.com/PwsProjectorServices/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd2" namespace="http://projectorpsa.com/DataContracts/Shared/Web/" />
+  <xs:import schemaLocation="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd3" namespace="http://projectorpsa.com/DataContracts/Requests/" />
+  <xs:import schemaLocation="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd7" namespace="http://projectorpsa.com/DataContracts/Responses/" />
+  <xs:import schemaLocation="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd10" namespace="http://projectorpsa.com/DataContracts/Shared/Scheduling/" />
+  <xs:import schemaLocation="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd11" namespace="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" />
+  <xs:import schemaLocation="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd12" namespace="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" />
+  <xs:import schemaLocation="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd13" namespace="http://projectorpsa.com/DataContracts/Shared/Report/" />
+  <xs:element name="PwsGetProjectWorkspaces">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="serviceRequest" nillable="true" type="q1:PwsGetProjectWorkspacesRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectWorkspacesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="PwsGetProjectWorkspacesResult" nillable="true" type="q2:PwsGetProjectWorkspacesRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectWorkspaceInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="serviceRequest" nillable="true" type="q3:PwsGetProjectWorkspaceInfoRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectWorkspaceInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="PwsGetProjectWorkspaceInfoResult" nillable="true" type="q4:PwsGetProjectWorkspaceInfoRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectContacts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="serviceRequest" nillable="true" type="q5:PwsGetProjectContactsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectContactsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="PwsGetProjectContactsResult" nillable="true" type="q6:PwsGetProjectContactsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectIssueList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="serviceRequest" nillable="true" type="q7:PwsGetProjectIssueListRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectIssueListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="PwsGetProjectIssueListResult" nillable="true" type="q8:PwsGetProjectIssueListRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectIssueHistory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="serviceRequest" nillable="true" type="q9:PwsGetProjectIssueHistoryRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectIssueHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="PwsGetProjectIssueHistoryResult" nillable="true" type="q10:PwsGetProjectIssueHistoryRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectIssueCategories">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="serviceRequest" nillable="true" type="q11:PwsGetProjectIssueCategoriesRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectIssueCategoriesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="PwsGetProjectIssueCategoriesResult" nillable="true" type="q12:PwsGetProjectIssueCategoriesRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectIssueStatuses">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="serviceRequest" nillable="true" type="q13:PwsGetProjectIssueStatusesRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectIssueStatusesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="PwsGetProjectIssueStatusesResult" nillable="true" type="q14:PwsGetProjectIssueStatusesRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveProjectIssues">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="serviceRequest" nillable="true" type="q15:PwsSaveProjectIssuesRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveProjectIssuesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="PwsSaveProjectIssuesResult" nillable="true" type="q16:PwsSaveProjectIssuesRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetPostedInvoices">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="serviceRequest" nillable="true" type="q17:PwsGetPostedInvoicesRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetPostedInvoicesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="PwsGetPostedInvoicesResult" nillable="true" type="q18:PwsGetPostedInvoicesRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetResourceList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q19:PwsGetResourceListRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetResourceListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsGetResourceListResult" nillable="true" type="q20:PwsGetResourceListRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetResource">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q21:PwsGetResourceRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetResourceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsGetResourceResult" nillable="true" type="q22:PwsGetResourceRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveResource">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q23:PwsSaveResourceRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveResourceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsSaveResourceResult" nillable="true" type="q24:PwsSaveResourceRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteResource">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q25:PwsDeleteResourceRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteResourceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsDeleteResourceResult" nillable="true" type="q26:PwsDeleteResourceRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveResourceSkillLevels">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q27:PwsSaveResourceSkillLevelsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveResourceSkillLevelsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsSaveResourceSkillLevelsResult" nillable="true" type="q28:PwsSaveResourceSkillLevelsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveResourceHistory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q29:PwsSaveResourceHistoryRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveResourceHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsSaveResourceHistoryResult" nillable="true" type="q30:PwsSaveResourceHistoryRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetExpenseTypeGroupList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q31:PwsGetExpenseTypeGroupListRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetExpenseTypeGroupListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsGetExpenseTypeGroupListResult" nillable="true" type="q32:PwsGetExpenseTypeGroupListRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetResourceAvailableTimeOff">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q33:PwsGetResourceAvailableTimeOffRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetResourceAvailableTimeOffResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsGetResourceAvailableTimeOffResult" nillable="true" type="q34:PwsGetResourceAvailableTimeOffRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveResourceAvailableTimeOff">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q35:PwsSaveResourceAvailableTimeOffRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveResourceAvailableTimeOffResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsSaveResourceAvailableTimeOffResult" nillable="true" type="q36:PwsSaveResourceAvailableTimeOffRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteResourceAvailableTimeOff">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q37:PwsDeleteResourceAvailableTimeOffRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteResourceAvailableTimeOffResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsDeleteResourceAvailableTimeOffResult" nillable="true" type="q38:PwsDeleteResourceAvailableTimeOffRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsAuthenticate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q39:PwsAuthenticateRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsAuthenticateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsAuthenticateResult" nillable="true" type="q40:PwsAuthenticateRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsUnauthenticate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q41:PwsUnauthenticateRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsUnauthenticateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsUnauthenticateResult" nillable="true" type="q42:PwsUnauthenticateRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsImpersonate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q43:PwsImpersonateRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsImpersonateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsImpersonateResult" nillable="true" type="q44:PwsImpersonateRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveUserDefinedFields">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q45:PwsSaveUserDefinedFieldsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveUserDefinedFieldsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsSaveUserDefinedFieldsResult" nillable="true" type="q46:PwsSaveUserDefinedFieldsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetDefaultFilterSearch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q47:PwsGetDefaultFilterSearchRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetDefaultFilterSearchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsGetDefaultFilterSearchResult" nillable="true" type="q48:PwsGetDefaultFilterSearchRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveDefaultFilterSearch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q49:PwsSaveDefaultFilterSearchRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveDefaultFilterSearchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsSaveDefaultFilterSearchResult" nillable="true" type="q50:PwsSaveDefaultFilterSearchRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsAcquireProjectorLocks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q51:PwsAcquireProjectorLocksRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsAcquireProjectorLocksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsAcquireProjectorLocksResult" nillable="true" type="q52:PwsAcquireProjectorLocksRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsCheckProjectorLocks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q53:PwsCheckProjectorLocksRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsCheckProjectorLocksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsCheckProjectorLocksResult" nillable="true" type="q54:PwsCheckProjectorLocksRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsReleaseProjectorLocks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q55="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q55:PwsReleaseProjectorLocksRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsReleaseProjectorLocksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsReleaseProjectorLocksResult" nillable="true" type="q56:PwsReleaseProjectorLocksRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsRenewProjectorLocks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q57:PwsRenewProjectorLocksRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsRenewProjectorLocksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsRenewProjectorLocksResult" nillable="true" type="q58:PwsRenewProjectorLocksRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetAccountingPeriodList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q59:PwsGetAccountingPeriodListRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetAccountingPeriodListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="PwsGetAccountingPeriodListResult" nillable="true" type="q60:PwsGetAccountingPeriodListRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetClientList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q61:PwsGetClientListRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetClientListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsGetClientListResult" nillable="true" type="q62:PwsGetClientListRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q63="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q63:PwsGetClientRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q64="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsGetClientResult" nillable="true" type="q64:PwsGetClientRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q65="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q65:PwsSaveClientRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q66="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsSaveClientResult" nillable="true" type="q66:PwsSaveClientRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q67="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q67:PwsDeleteClientRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q68="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsDeleteClientResult" nillable="true" type="q68:PwsDeleteClientRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetCompanyList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q69="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q69:PwsGetCompanyListRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetCompanyListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q70="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="PwsGetCompanyListResult" nillable="true" type="q70:PwsGetCompanyListRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetCostCenterList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q71="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q71:PwsGetCostCenterListRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetCostCenterListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q72="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="PwsGetCostCenterListResult" nillable="true" type="q72:PwsGetCostCenterListRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetDepartmentList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q73="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q73:PwsGetDepartmentListRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetDepartmentListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q74="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsGetDepartmentListResult" nillable="true" type="q74:PwsGetDepartmentListRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetTitleList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q75="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q75:PwsGetTitleListRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetTitleListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q76="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsGetTitleListResult" nillable="true" type="q76:PwsGetTitleListRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetEngagementTypeList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q77="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q77:PwsGetEngagementTypeListRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetEngagementTypeListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q78="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="PwsGetEngagementTypeListResult" nillable="true" type="q78:PwsGetEngagementTypeListRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetUserList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q79="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q79:PwsGetUserListRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetUserListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q80="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsGetUserListResult" nillable="true" type="q80:PwsGetUserListRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q81="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q81:PwsGetUserRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q82="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsGetUserResult" nillable="true" type="q82:PwsGetUserRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q83="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q83:PwsSaveUserRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q84="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsSaveUserResult" nillable="true" type="q84:PwsSaveUserRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q85="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q85:PwsDeleteUserRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q86="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsDeleteUserResult" nillable="true" type="q86:PwsDeleteUserRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSetUserPermissionsNotifications">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q87="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q87:PwsSetUserPermissionsNotificationsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSetUserPermissionsNotificationsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q88="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsSetUserPermissionsNotificationsResult" nillable="true" type="q88:PwsSetUserPermissionsNotificationsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetEngagementList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q89="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q89:PwsGetEngagementListRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetEngagementListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q90="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsGetEngagementListResult" nillable="true" type="q90:PwsGetEngagementListRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetEngagement">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q91="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q91:PwsGetEngagementRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetEngagementResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q92="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsGetEngagementResult" nillable="true" type="q92:PwsGetEngagementRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveEngagement">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q93="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q93:PwsSaveEngagementRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveEngagementResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q94="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsSaveEngagementResult" nillable="true" type="q94:PwsSaveEngagementRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteEngagement">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q95="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q95:PwsDeleteEngagementRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteEngagementResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q96="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsDeleteEngagementResult" nillable="true" type="q96:PwsDeleteEngagementRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetContractLineItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q97="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q97:PwsGetContractLineItemRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetContractLineItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q98="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsGetContractLineItemResult" nillable="true" type="q98:PwsGetContractLineItemRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveContractLineItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q99="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q99:PwsSaveContractLineItemRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveContractLineItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q100="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsSaveContractLineItemResult" nillable="true" type="q100:PwsSaveContractLineItemRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteContractLineItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q101="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q101:PwsDeleteContractLineItemRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteContractLineItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q102="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsDeleteContractLineItemResult" nillable="true" type="q102:PwsDeleteContractLineItemRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveContractLineItemMilestone">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q103="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q103:PwsSaveContractLineItemMilestoneRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveContractLineItemMilestoneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q104="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsSaveContractLineItemMilestoneResult" nillable="true" type="q104:PwsSaveContractLineItemMilestoneRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteContractLineItemMilestone">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q105="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q105:PwsDeleteContractLineItemMilestoneRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteContractLineItemMilestoneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q106="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsDeleteContractLineItemMilestoneResult" nillable="true" type="q106:PwsDeleteContractLineItemMilestoneRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsApplyRevRecAdjustment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q107="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q107:PwsApplyRevRecAdjustmentRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsApplyRevRecAdjustmentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q108="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsApplyRevRecAdjustmentResult" nillable="true" type="q108:PwsApplyRevRecAdjustmentRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q109="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q109:PwsGetProjectListRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q110="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsGetProjectListResult" nillable="true" type="q110:PwsGetProjectListRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q111="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q111:PwsGetProjectRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q112="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsGetProjectResult" nillable="true" type="q112:PwsGetProjectRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveProject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q113="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q113:PwsSaveProjectRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveProjectResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q114="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsSaveProjectResult" nillable="true" type="q114:PwsSaveProjectRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteProject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q115="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q115:PwsDeleteProjectRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteProjectResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q116="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsDeleteProjectResult" nillable="true" type="q116:PwsDeleteProjectRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveProjectRole">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q117="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q117:PwsSaveProjectRoleRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveProjectRoleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q118="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsSaveProjectRoleResult" nillable="true" type="q118:PwsSaveProjectRoleRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteProjectRole">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q119="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q119:PwsDeleteProjectRoleRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteProjectRoleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q120="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsDeleteProjectRoleResult" nillable="true" type="q120:PwsDeleteProjectRoleRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveProjectTaskType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q121="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q121:PwsSaveProjectTaskTypeRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveProjectTaskTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q122="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsSaveProjectTaskTypeResult" nillable="true" type="q122:PwsSaveProjectTaskTypeRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteProjectTaskType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q123="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q123:PwsDeleteProjectTaskTypeRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteProjectTaskTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q124="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsDeleteProjectTaskTypeResult" nillable="true" type="q124:PwsDeleteProjectTaskTypeRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveProjectTask">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q125="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q125:PwsSaveProjectTaskRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveProjectTaskResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q126="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsSaveProjectTaskResult" nillable="true" type="q126:PwsSaveProjectTaskRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteProjectTask">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q127="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q127:PwsDeleteProjectTaskRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteProjectTaskResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q128="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsDeleteProjectTaskResult" nillable="true" type="q128:PwsDeleteProjectTaskRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveProjectTaskRole">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q129="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q129:PwsSaveProjectTaskRoleRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveProjectTaskRoleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q130="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsSaveProjectTaskRoleResult" nillable="true" type="q130:PwsSaveProjectTaskRoleRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteProjectTaskRole">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q131="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q131:PwsDeleteProjectTaskRoleRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteProjectTaskRoleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q132="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsDeleteProjectTaskRoleResult" nillable="true" type="q132:PwsDeleteProjectTaskRoleRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsAddProjectNote">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q133="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q133:PwsAddProjectNoteRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsAddProjectNoteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q134="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsAddProjectNoteResult" nillable="true" type="q134:PwsAddProjectNoteRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetBaselineBucketDateIntervals">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q135="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q135:PwsGetBaselineBucketDateIntervalsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetBaselineBucketDateIntervalsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q136="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsGetBaselineBucketDateIntervalsResult" nillable="true" type="q136:PwsGetBaselineBucketDateIntervalsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectTimeBaseline">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q137="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q137:PwsGetProjectTimeBaselineRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectTimeBaselineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q138="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsGetProjectTimeBaselineResult" nillable="true" type="q138:PwsGetProjectTimeBaselineRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectCostBaseline">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q139="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q139:PwsGetProjectCostBaselineRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectCostBaselineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q140="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsGetProjectCostBaselineResult" nillable="true" type="q140:PwsGetProjectCostBaselineRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteProjectTimeBaseline">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q141="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q141:PwsDeleteProjectTimeBaselineRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteProjectTimeBaselineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q142="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsDeleteProjectTimeBaselineResult" nillable="true" type="q142:PwsDeleteProjectTimeBaselineRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteProjectCostBaseline">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q143="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q143:PwsDeleteProjectCostBaselineRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteProjectCostBaselineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q144="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsDeleteProjectCostBaselineResult" nillable="true" type="q144:PwsDeleteProjectCostBaselineRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsUpdateProjectTimeBaseline">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q145="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q145:PwsUpdateProjectTimeBaselineRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsUpdateProjectTimeBaselineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q146="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsUpdateProjectTimeBaselineResult" nillable="true" type="q146:PwsUpdateProjectTimeBaselineRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsUpdateProjectCostBaseline">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q147="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q147:PwsUpdateProjectCostBaselineRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsUpdateProjectCostBaselineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q148="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsUpdateProjectCostBaselineResult" nillable="true" type="q148:PwsUpdateProjectCostBaselineRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsCreateProjectTimeBaseline">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q149="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q149:PwsCreateProjectTimeBaselineRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsCreateProjectTimeBaselineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q150="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsCreateProjectTimeBaselineResult" nillable="true" type="q150:PwsCreateProjectTimeBaselineRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsCreateProjectCostBaseline">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q151="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="serviceRequest" nillable="true" type="q151:PwsCreateProjectCostBaselineRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsCreateProjectCostBaselineResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q152="http://projectorpsa.com/DataContracts/Shared/Scheduling/" minOccurs="0" name="PwsCreateProjectCostBaselineResult" nillable="true" type="q152:PwsCreateProjectCostBaselineRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetAlerts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q153="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q153:PwsGetAlertsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetAlertsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q154="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetAlertsResult" nillable="true" type="q154:PwsGetAlertsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetOnBehalfOfResources">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q155="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q155:PwsGetOnBehalfOfResourcesRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetOnBehalfOfResourcesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q156="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetOnBehalfOfResourcesResult" nillable="true" type="q156:PwsGetOnBehalfOfResourcesRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSearchProjects">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q157="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q157:PwsSearchProjectsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSearchProjectsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q158="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsSearchProjectsResult" nillable="true" type="q158:PwsSearchProjectsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetLocations">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q159="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q159:PwsGetLocationsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetLocationsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q160="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetLocationsResult" nillable="true" type="q160:PwsGetLocationsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetTimeEntryParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q161="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q161:PwsGetTimeEntryParametersRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetTimeEntryParametersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q162="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetTimeEntryParametersResult" nillable="true" type="q162:PwsGetTimeEntryParametersRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetTimeAlerts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q163="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q163:PwsGetTimeAlertsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetTimeAlertsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q164="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetTimeAlertsResult" nillable="true" type="q164:PwsGetTimeAlertsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDismissTimeAlerts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q165="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q165:PwsDismissTimeAlertsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDismissTimeAlertsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q166="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsDismissTimeAlertsResult" nillable="true" type="q166:PwsDismissTimeAlertsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetTimeCards">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q167="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q167:PwsGetTimeCardsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetTimeCardsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q168="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetTimeCardsResult" nillable="true" type="q168:PwsGetTimeCardsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetTimeEntryProjectRole">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q169="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q169:PwsGetTimeEntryProjectRoleRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetTimeEntryProjectRoleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q170="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetTimeEntryProjectRoleResult" nillable="true" type="q170:PwsGetTimeEntryProjectRoleRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetTimeEntryTimeOff">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q171="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q171:PwsGetTimeEntryTimeOffRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetTimeEntryTimeOffResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q172="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetTimeEntryTimeOffResult" nillable="true" type="q172:PwsGetTimeEntryTimeOffRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetResourceWorkingSchedule">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q173="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q173:PwsGetResourceWorkingScheduleRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetResourceWorkingScheduleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q174="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetResourceWorkingScheduleResult" nillable="true" type="q174:PwsGetResourceWorkingScheduleRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveTimeCardsAndRto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q175="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q175:PwsSaveTimeCardsAndRtoRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveTimeCardsAndRtoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q176="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsSaveTimeCardsAndRtoResult" nillable="true" type="q176:PwsSaveTimeCardsAndRtoRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveTimeCards">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q177="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q177:PwsSaveTimeCardsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveTimeCardsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q178="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsSaveTimeCardsResult" nillable="true" type="q178:PwsSaveTimeCardsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSubmitTimeCards">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q179="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="rq" nillable="true" type="q179:PwsSubmitTimeCardsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSubmitTimeCardsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q180="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsSubmitTimeCardsResult" nillable="true" type="q180:PwsSubmitTimeCardsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsExportIncrementalTimeFeed">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q181="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q181:PwsExportIncrementalTimeFeedRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsExportIncrementalTimeFeedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q182="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsExportIncrementalTimeFeedResult" nillable="true" type="q182:PwsExportIncrementalTimeFeedRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetDashboardParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q183="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q183:PwsGetDashboardParametersRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetDashboardParametersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q184="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetDashboardParametersResult" nillable="true" type="q184:PwsGetDashboardParametersRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetResourceSchedule">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q185="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q185:PwsGetResourceScheduleRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetResourceScheduleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q186="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetResourceScheduleResult" nillable="true" type="q186:PwsGetResourceScheduleRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetResourceUtilizationSummary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q187="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q187:PwsGetResourceUtilizationSummaryRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetResourceUtilizationSummaryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q188="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetResourceUtilizationSummaryResult" nillable="true" type="q188:PwsGetResourceUtilizationSummaryRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetTimeCardApprovers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q189="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q189:PwsGetTimeCardApproversRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetTimeCardApproversResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q190="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetTimeCardApproversResult" nillable="true" type="q190:PwsGetTimeCardApproversRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectInfoForResourceTimeEntry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q191="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q191:PwsGetProjectInfoForResourceTimeEntryRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectInfoForResourceTimeEntryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q192="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetProjectInfoForResourceTimeEntryResult" nillable="true" type="q192:PwsGetProjectInfoForResourceTimeEntryRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetExpenseEntryParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q193="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q193:PwsGetExpenseEntryParametersRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetExpenseEntryParametersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q194="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetExpenseEntryParametersResult" nillable="true" type="q194:PwsGetExpenseEntryParametersRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetCostAlerts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q195="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q195:PwsGetCostAlertsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetCostAlertsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q196="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetCostAlertsResult" nillable="true" type="q196:PwsGetCostAlertsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetExpenseReports">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q197="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q197:PwsGetExpenseReportsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetExpenseReportsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q198="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetExpenseReportsResult" nillable="true" type="q198:PwsGetExpenseReportsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetExpenseDocument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q199="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q199:PwsGetExpenseDocumentRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetExpenseDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q200="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetExpenseDocumentResult" nillable="true" type="q200:PwsGetExpenseDocumentRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetResourceCostCards">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q201="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q201:PwsGetResourceCostCardsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetResourceCostCardsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q202="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetResourceCostCardsResult" nillable="true" type="q202:PwsGetResourceCostCardsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetExpenseDocumentCostCard">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q203="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q203:PwsGetExpenseDocumentCostCardRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetExpenseDocumentCostCardResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q204="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetExpenseDocumentCostCardResult" nillable="true" type="q204:PwsGetExpenseDocumentCostCardRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsMarkPaymentVouchersReceived">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q205="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q205:PwsMarkPaymentVouchersReceivedRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsMarkPaymentVouchersReceivedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q206="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsMarkPaymentVouchersReceivedResult" nillable="true" type="q206:PwsMarkPaymentVouchersReceivedRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetCurrencies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q207="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q207:PwsGetCurrenciesRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetCurrenciesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q208="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetCurrenciesResult" nillable="true" type="q208:PwsGetCurrenciesRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetDefaultVatPercentage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q209="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q209:PwsGetDefaultVatPercentageRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetDefaultVatPercentageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q210="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetDefaultVatPercentageResult" nillable="true" type="q210:PwsGetDefaultVatPercentageRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetExpenseTypes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q211="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q211:PwsGetExpenseTypesRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetExpenseTypesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q212="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetExpenseTypesResult" nillable="true" type="q212:PwsGetExpenseTypesRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetMileageRate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q213="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q213:PwsGetMileageRateRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetMileageRateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q214="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetMileageRateResult" nillable="true" type="q214:PwsGetMileageRateRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetVendors">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q215="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q215:PwsGetVendorsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetVendorsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q216="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetVendorsResult" nillable="true" type="q216:PwsGetVendorsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetExpenseDocumentApprovers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q217="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q217:PwsGetExpenseDocumentApproversRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetExpenseDocumentApproversResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q218="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetExpenseDocumentApproversResult" nillable="true" type="q218:PwsGetExpenseDocumentApproversRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetResourceExpenseSchedule">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q219="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q219:PwsGetResourceExpenseScheduleRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetResourceExpenseScheduleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q220="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetResourceExpenseScheduleResult" nillable="true" type="q220:PwsGetResourceExpenseScheduleRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveExpenseDocument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q221="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q221:PwsSaveExpenseDocumentRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveExpenseDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q222="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsSaveExpenseDocumentResult" nillable="true" type="q222:PwsSaveExpenseDocumentRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteExpenseDocument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q223="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q223:PwsDeleteExpenseDocumentRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteExpenseDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q224="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsDeleteExpenseDocumentResult" nillable="true" type="q224:PwsDeleteExpenseDocumentRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveExpenseDocumentCostCard">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q225="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q225:PwsSaveExpenseDocumentCostCardRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveExpenseDocumentCostCardResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q226="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsSaveExpenseDocumentCostCardResult" nillable="true" type="q226:PwsSaveExpenseDocumentCostCardRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteExpenseDocumentCostCard">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q227="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q227:PwsDeleteExpenseDocumentCostCardRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteExpenseDocumentCostCardResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q228="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsDeleteExpenseDocumentCostCardResult" nillable="true" type="q228:PwsDeleteExpenseDocumentCostCardRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetResourceExpenseImportPool">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q229="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q229:PwsGetResourceExpenseImportPoolRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetResourceExpenseImportPoolResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q230="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetResourceExpenseImportPoolResult" nillable="true" type="q230:PwsGetResourceExpenseImportPoolRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveResourceExpenseImportPoolItems">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q231="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q231:PwsSaveResourceExpenseImportPoolItemsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveResourceExpenseImportPoolItemsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q232="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsSaveResourceExpenseImportPoolItemsResult" nillable="true" type="q232:PwsSaveResourceExpenseImportPoolItemsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectInfoForResourceExpenseEntry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q233="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q233:PwsGetProjectInfoForResourceExpenseEntryRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectInfoForResourceExpenseEntryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q234="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetProjectInfoForResourceExpenseEntryResult" nillable="true" type="q234:PwsGetProjectInfoForResourceExpenseEntryRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetTimeCardHistory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q235="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q235:PwsGetTimeCardHistoryRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetTimeCardHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q236="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetTimeCardHistoryResult" nillable="true" type="q236:PwsGetTimeCardHistoryRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSetTimeCardApprovalWorkflowStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q237="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q237:PwsSetTimeCardApprovalWorkflowStatusRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSetTimeCardApprovalWorkflowStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q238="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsSetTimeCardApprovalWorkflowStatusResult" nillable="true" type="q238:PwsSetTimeCardApprovalWorkflowStatusRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSetCostCardApprovalWorkflowStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q239="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q239:PwsSetCostCardApprovalWorkflowStatusRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSetCostCardApprovalWorkflowStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q240="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsSetCostCardApprovalWorkflowStatusResult" nillable="true" type="q240:PwsSetCostCardApprovalWorkflowStatusRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSetCostCardPaymentWorkflowStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q241="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q241:PwsSetCostCardPaymentWorkflowStatusRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSetCostCardPaymentWorkflowStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q242="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsSetCostCardPaymentWorkflowStatusResult" nillable="true" type="q242:PwsSetCostCardPaymentWorkflowStatusRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSetCostCardInvoiceWorkflowStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q243="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q243:PwsSetCostCardInvoiceWorkflowStatusRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSetCostCardInvoiceWorkflowStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q244="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsSetCostCardInvoiceWorkflowStatusResult" nillable="true" type="q244:PwsSetCostCardInvoiceWorkflowStatusRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetTimeCardsByExternalGroupingIdentifier">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q245="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q245:PwsGetTimeCardsByExternalGroupingIdentifierRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetTimeCardsByExternalGroupingIdentifierResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q246="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetTimeCardsByExternalGroupingIdentifierResult" nillable="true" type="q246:PwsGetTimeCardsByExternalGroupingIdentifierRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetCostCardsByExternalGroupingIdentifier">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q247="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="serviceRequest" nillable="true" type="q247:PwsGetCostCardsByExternalGroupingIdentifierRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetCostCardsByExternalGroupingIdentifierResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q248="http://projectorpsa.com/DataContracts/Shared/TimeAndCost/" minOccurs="0" name="PwsGetCostCardsByExternalGroupingIdentifierResult" nillable="true" type="q248:PwsGetCostCardsByExternalGroupingIdentifierRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetDocumentManagementParameters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q249="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="serviceRequest" nillable="true" type="q249:PwsGetDocumentManagementParametersRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetDocumentManagementParametersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q250="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="PwsGetDocumentManagementParametersResult" nillable="true" type="q250:PwsGetDocumentManagementParametersRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetFolder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q251="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="serviceRequest" nillable="true" type="q251:PwsGetFolderRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetFolderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q252="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="PwsGetFolderResult" nillable="true" type="q252:PwsGetFolderRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetFolderContents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q253="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="serviceRequest" nillable="true" type="q253:PwsGetFolderContentsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetFolderContentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q254="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="PwsGetFolderContentsResult" nillable="true" type="q254:PwsGetFolderContentsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetDocumentDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q255="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="serviceRequest" nillable="true" type="q255:PwsGetDocumentDetailsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetDocumentDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q256="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="PwsGetDocumentDetailsResult" nillable="true" type="q256:PwsGetDocumentDetailsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetDocumentHistory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q257="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="serviceRequest" nillable="true" type="q257:PwsGetDocumentHistoryRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetDocumentHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q258="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="PwsGetDocumentHistoryResult" nillable="true" type="q258:PwsGetDocumentHistoryRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsLockDocument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q259="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="serviceRequest" nillable="true" type="q259:PwsLockDocumentRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsLockDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q260="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="PwsLockDocumentResult" nillable="true" type="q260:PwsLockDocumentRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsUnlockDocument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q261="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="serviceRequest" nillable="true" type="q261:PwsUnlockDocumentRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsUnlockDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q262="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="PwsUnlockDocumentResult" nillable="true" type="q262:PwsUnlockDocumentRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsPurgeDocument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q263="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="serviceRequest" nillable="true" type="q263:PwsPurgeDocumentRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsPurgeDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q264="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="PwsPurgeDocumentResult" nillable="true" type="q264:PwsPurgeDocumentRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsRollbackDocument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q265="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="serviceRequest" nillable="true" type="q265:PwsRollbackDocumentRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsRollbackDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q266="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="PwsRollbackDocumentResult" nillable="true" type="q266:PwsRollbackDocumentRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsRenameDocument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q267="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="serviceRequest" nillable="true" type="q267:PwsRenameDocumentRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsRenameDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q268="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="PwsRenameDocumentResult" nillable="true" type="q268:PwsRenameDocumentRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSetDocumentUri">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q269="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="serviceRequest" nillable="true" type="q269:PwsSetDocumentUriRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSetDocumentUriResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q270="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="PwsSetDocumentUriResult" nillable="true" type="q270:PwsSetDocumentUriRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteDocument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q271="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="serviceRequest" nillable="true" type="q271:PwsDeleteDocumentRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q272="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="PwsDeleteDocumentResult" nillable="true" type="q272:PwsDeleteDocumentRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsUndeleteDocument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q273="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="serviceRequest" nillable="true" type="q273:PwsUndeleteDocumentRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsUndeleteDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q274="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="PwsUndeleteDocumentResult" nillable="true" type="q274:PwsUndeleteDocumentRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteDocumentVersion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q275="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="serviceRequest" nillable="true" type="q275:PwsDeleteDocumentVersionRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteDocumentVersionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q276="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="PwsDeleteDocumentVersionResult" nillable="true" type="q276:PwsDeleteDocumentVersionRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSetArchiveStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q277="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="serviceRequest" nillable="true" type="q277:PwsSetArchiveStatusRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSetArchiveStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q278="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="PwsSetArchiveStatusResult" nillable="true" type="q278:PwsSetArchiveStatusRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSearchDocuments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q279="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="serviceRequest" nillable="true" type="q279:PwsSearchDocumentsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSearchDocumentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q280="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="PwsSearchDocumentsResult" nillable="true" type="q280:PwsSearchDocumentsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveDocumentLink">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q281="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="serviceRequest" nillable="true" type="q281:PwsSaveDocumentLinkRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveDocumentLinkResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q282="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" minOccurs="0" name="PwsSaveDocumentLinkResult" nillable="true" type="q282:PwsSaveDocumentLinkRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetReportOutput">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q283="http://projectorpsa.com/DataContracts/Shared/Report/" minOccurs="0" name="serviceRequest" nillable="true" type="q283:PwsGetReportOutputRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetReportOutputResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q284="http://projectorpsa.com/DataContracts/Shared/Report/" minOccurs="0" name="PwsGetReportOutputResult" nillable="true" type="q284:PwsGetReportOutputRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetVendorList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q285="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q285:PwsGetVendorListRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetVendorListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q286="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsGetVendorListResult" nillable="true" type="q286:PwsGetVendorListRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetVendor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q287="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q287:PwsGetVendorRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetVendorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q288="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsGetVendorResult" nillable="true" type="q288:PwsGetVendorRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveVendor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q289="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q289:PwsSaveVendorRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsSaveVendorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q290="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsSaveVendorResult" nillable="true" type="q290:PwsSaveVendorRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteVendor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q291="http://projectorpsa.com/DataContracts/Requests/" minOccurs="0" name="serviceRequest" nillable="true" type="q291:PwsDeleteVendorRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsDeleteVendorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q292="http://projectorpsa.com/DataContracts/Responses/" minOccurs="0" name="PwsDeleteVendorResult" nillable="true" type="q292:PwsDeleteVendorRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectWorkspaceAlerts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q293="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="serviceRequest" nillable="true" type="q293:PwsGetProjectWorkspaceAlertsRq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PwsGetProjectWorkspaceAlertsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q294="http://projectorpsa.com/DataContracts/Shared/Web/" minOccurs="0" name="PwsGetProjectWorkspaceAlertsResult" nillable="true" type="q294:PwsGetProjectWorkspaceAlertsRs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

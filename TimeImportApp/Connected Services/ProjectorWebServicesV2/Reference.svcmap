@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ebd7323a-d264-4817-8dce-c7a4bf05b086" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PwsProjectorServices.xsd" MetadataType="Schema" ID="88687c3f-2dde-4506-a26c-09d8f49fe6f1" SourceId="1" SourceUrl="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd0" />
+    <MetadataFile FileName="PwsProjectorServices.wsdl" MetadataType="Wsdl" ID="a24420f4-fbcd-4a30-9285-4ce681a07056" SourceId="1" SourceUrl="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?wsdl" />
+    <MetadataFile FileName="PwsProjectorServices1.xsd" MetadataType="Schema" ID="61a21670-504a-4d6b-aabf-7b20409aacd8" SourceId="1" SourceUrl="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd9" />
+    <MetadataFile FileName="PwsProjectorServices2.xsd" MetadataType="Schema" ID="822052fa-f2f3-4af3-b950-289d383a463d" SourceId="1" SourceUrl="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd7" />
+    <MetadataFile FileName="PwsProjectorServices3.xsd" MetadataType="Schema" ID="d7e0d4ba-ccba-4d7b-bfe9-4a4e84a16792" SourceId="1" SourceUrl="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd5" />
+    <MetadataFile FileName="PwsProjectorServices4.xsd" MetadataType="Schema" ID="9b61ad39-a1e3-42a9-8ac3-17601cabbe52" SourceId="1" SourceUrl="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd3" />
+    <MetadataFile FileName="PwsProjectorServices.disco" MetadataType="Disco" ID="b43bc142-d788-4a20-a03c-2bb0953786c5" SourceId="1" SourceUrl="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?disco" />
+    <MetadataFile FileName="PwsProjectorServices5.xsd" MetadataType="Schema" ID="275e0ccc-aa91-4298-9dfa-8c99a6d3f1c6" SourceId="1" SourceUrl="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd1" />
+    <MetadataFile FileName="PwsProjectorServices6.xsd" MetadataType="Schema" ID="920282b4-4fab-425d-8256-547b35bf6b41" SourceId="1" SourceUrl="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd11" />
+    <MetadataFile FileName="PwsProjectorServices7.xsd" MetadataType="Schema" ID="5c1769c3-5567-4646-b18c-6647dfb05855" SourceId="1" SourceUrl="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd10" />
+    <MetadataFile FileName="PwsProjectorServices8.xsd" MetadataType="Schema" ID="55e064e1-6b73-4ab0-a7c6-361a4beca35c" SourceId="1" SourceUrl="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd13" />
+    <MetadataFile FileName="PwsProjectorServices9.xsd" MetadataType="Schema" ID="d6f5046d-e00d-4f93-89d9-b574373e5ed4" SourceId="1" SourceUrl="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd12" />
+    <MetadataFile FileName="PwsProjectorServices10.xsd" MetadataType="Schema" ID="909df803-129d-4b84-b77a-53fd2ae79e45" SourceId="1" SourceUrl="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd8" />
+    <MetadataFile FileName="PwsProjectorServices11.xsd" MetadataType="Schema" ID="a16447f8-5ba2-43d4-bf99-8f7b7d063f49" SourceId="1" SourceUrl="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd6" />
+    <MetadataFile FileName="PwsProjectorServices12.xsd" MetadataType="Schema" ID="444acba2-60e7-47ae-bbc3-5e387d9d40ce" SourceId="1" SourceUrl="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd4" />
+    <MetadataFile FileName="PwsProjectorServices13.xsd" MetadataType="Schema" ID="a4131edc-d818-4ba9-88b5-242721528a9e" SourceId="1" SourceUrl="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://projectorpsa.com/DataContracts/Shared/Report/" elementFormDefault="qualified" targetNamespace="http://projectorpsa.com/DataContracts/Shared/Report/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd4" namespace="http://projectorpsa.com/DataContracts/Shared/Common/" />
+  <xs:import schemaLocation="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd3" namespace="http://projectorpsa.com/DataContracts/Requests/" />
+  <xs:import schemaLocation="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd5" namespace="http://projectorpsa.com/CommonServices/" />
+  <xs:complexType name="PwsGetReportOutputRq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://projectorpsa.com/DataContracts/Requests/" base="q1:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AamGantt" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ColumnHeaders" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DateFormat" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Delimiter" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExplicitFieldsOnly" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Format" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Function" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IncludeMetadata" nillable="true" type="xs:string" />
+          <xs:element xmlns:q2="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="ReportIdentity" nillable="true" type="q2:PwsReportRef" />
+          <xs:element minOccurs="0" name="AccountCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AuthToken" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetReportOutputRq" nillable="true" type="tns:PwsGetReportOutputRq" />
+  <xs:complexType name="PwsGetReportOutputRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://projectorpsa.com/CommonServices/" base="q3:PwsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Report" nillable="true" type="tns:PwsReport" />
+          <xs:element minOccurs="0" name="RedirectUrl" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetReportOutputRs" nillable="true" type="tns:PwsGetReportOutputRs" />
+  <xs:complexType name="PwsReport">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://projectorpsa.com/DataContracts/Shared/Common/" base="q4:PwsReportRef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ReportData" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReportFile" nillable="true" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsReport" nillable="true" type="tns:PwsReport" />
+</xs:schema>

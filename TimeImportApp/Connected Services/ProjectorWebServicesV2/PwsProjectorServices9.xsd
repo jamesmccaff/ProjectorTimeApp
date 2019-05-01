@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" elementFormDefault="qualified" targetNamespace="http://projectorpsa.com/DataContracts/Shared/DocumentManagement/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd3" namespace="http://projectorpsa.com/DataContracts/Requests/" />
+  <xs:import schemaLocation="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd5" namespace="http://projectorpsa.com/CommonServices/" />
+  <xs:import schemaLocation="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd4" namespace="http://projectorpsa.com/DataContracts/Shared/Common/" />
+  <xs:complexType name="PwsGetDocumentManagementParametersRq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://projectorpsa.com/DataContracts/Requests/" base="q1:PwsRequest">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetDocumentManagementParametersRq" nillable="true" type="tns:PwsGetDocumentManagementParametersRq" />
+  <xs:complexType name="PwsGetDocumentManagementParametersRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://projectorpsa.com/CommonServices/" base="q2:PwsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Parameters" nillable="true" type="tns:PwsDocumentManagementParameters" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetDocumentManagementParametersRs" nillable="true" type="tns:PwsGetDocumentManagementParametersRs" />
+  <xs:complexType name="PwsDocumentManagementParameters">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://projectorpsa.com/DataContracts/Shared/Common/" base="q3:PwsBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DocumentServerUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InstanceIdentifier" type="xs:unsignedByte" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsDocumentManagementParameters" nillable="true" type="tns:PwsDocumentManagementParameters" />
+  <xs:complexType name="PwsGetFolderRq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q4="http://projectorpsa.com/DataContracts/Requests/" base="q4:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreateIfNeededFlag" type="xs:boolean" />
+          <xs:element xmlns:q5="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="ExpenseDocumentIdentity" nillable="true" type="q5:PwsExpenseDocumentRef" />
+          <xs:element minOccurs="0" name="FolderTypeCode" nillable="true" type="xs:string" />
+          <xs:element xmlns:q6="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="InvoiceIdentity" nillable="true" type="q6:PwsInvoiceRef" />
+          <xs:element xmlns:q7="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="ProjectIdentity" nillable="true" type="q7:PwsProjectRef" />
+          <xs:element xmlns:q8="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="ProjectIssueIdentity" nillable="true" type="q8:PwsProjectIssueRef" />
+          <xs:element xmlns:q9="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="ResourceIdentity" nillable="true" type="q9:PwsResourceRef" />
+          <xs:element xmlns:q10="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="UserIdentity" nillable="true" type="q10:PwsUserRef" />
+          <xs:element xmlns:q11="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="CostCardIdentity" nillable="true" type="q11:PwsCostCardRef" />
+          <xs:element xmlns:q12="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="PaymentVoucherIdentity" nillable="true" type="q12:PwsPaymentVoucherRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetFolderRq" nillable="true" type="tns:PwsGetFolderRq" />
+  <xs:complexType name="PwsGetFolderRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q13="http://projectorpsa.com/CommonServices/" base="q13:PwsResponse">
+        <xs:sequence>
+          <xs:element xmlns:q14="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="FolderIdentity" nillable="true" type="q14:PwsFolderRef" />
+          <xs:element minOccurs="0" name="AssociatedEntityDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CanAddAssociationsFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CanAddDocumentsFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CanAddLinksFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CanAddNotesFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CanAddVersionsFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CanDeleteDocumentsFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CanSearchDocumentsFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CanViewDocumentsFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="RequireDocumentDataFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="RequireUniqueFilenamesFlag" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetFolderRs" nillable="true" type="tns:PwsGetFolderRs" />
+  <xs:complexType name="PwsGetFolderContentsRq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q15="http://projectorpsa.com/DataContracts/Requests/" base="q15:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q16="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="FolderIdentity" nillable="true" type="q16:PwsFolderRef" />
+          <xs:element minOccurs="0" name="IncludeDeletedDocumentsFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IncludeNotesFlag" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetFolderContentsRq" nillable="true" type="tns:PwsGetFolderContentsRq" />
+  <xs:complexType name="PwsGetFolderContentsRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q17="http://projectorpsa.com/CommonServices/" base="q17:PwsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Folder" nillable="true" type="tns:PwsFolder" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetFolderContentsRs" nillable="true" type="tns:PwsGetFolderContentsRs" />
+  <xs:complexType name="PwsFolder">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q18="http://projectorpsa.com/DataContracts/Shared/Common/" base="q18:PwsFolderRef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedByUserIdentity" nillable="true" type="q18:PwsUserRef" />
+          <xs:element minOccurs="0" name="CreatedTimestamp" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DeletedByUserIdentity" nillable="true" type="q18:PwsUserRef" />
+          <xs:element minOccurs="0" name="DeletedTimestamp" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Documents" nillable="true" type="tns:ArrayOfPwsDocument" />
+          <xs:element minOccurs="0" name="FolderName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FolderTypeCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ModifiedByUserIdentity" nillable="true" type="q18:PwsUserRef" />
+          <xs:element minOccurs="0" name="ModifiedTimestamp" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="AttachmentNotes" nillable="true" type="tns:ArrayOfPwsAttachmentNote" />
+          <xs:element minOccurs="0" name="CanAddAssociationsFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CanAddDocumentsFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CanAddLinksFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CanAddNotesFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CanAddVersionsFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CanSearchDocumentsFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="RequireDocumentDataFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="RequireUniqueFilenamesFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="UploadFolderIdentity" nillable="true" type="q18:PwsFolderRef" />
+          <xs:element minOccurs="0" name="AssociatedEntityDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CanDeleteDocumentsFlag" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsFolder" nillable="true" type="tns:PwsFolder" />
+  <xs:complexType name="ArrayOfPwsDocument">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PwsDocument" nillable="true" type="tns:PwsDocument" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPwsDocument" nillable="true" type="tns:ArrayOfPwsDocument" />
+  <xs:complexType name="PwsDocument">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q19="http://projectorpsa.com/DataContracts/Shared/Common/" base="q19:PwsDocumentRef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreatedByUserIdentity" nillable="true" type="q19:PwsUserRef" />
+          <xs:element minOccurs="0" name="CreatedTimestamp" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CurrentVersion" nillable="true" type="tns:PwsDocumentVersion" />
+          <xs:element minOccurs="0" name="DeletedByUserIdentity" nillable="true" type="q19:PwsUserRef" />
+          <xs:element minOccurs="0" name="DeletedTimestamp" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DocumentName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DocumentSize" nillable="true" type="xs:long" />
+          <xs:element minOccurs="0" name="DocumentUri" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LockedByUserIdentity" nillable="true" type="q19:PwsUserRef" />
+          <xs:element minOccurs="0" name="LockedTimestamp" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="MimeType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ModifiedByUserIdentity" nillable="true" type="q19:PwsUserRef" />
+          <xs:element minOccurs="0" name="ModifiedTimestamp" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="SupportPreviewFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SupportThumbnailFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="DocumentData" nillable="true" type="tns:PwsDocumentDataElement" />
+          <xs:element minOccurs="0" name="EditDeleteFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="NumberPages" nillable="true" type="xs:short" />
+          <xs:element minOccurs="0" name="ArchiveIdentity" nillable="true" type="q19:PwsDocumentArchiveRef" />
+          <xs:element minOccurs="0" name="EditDeletePermissionFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ReceiptLockedFlag" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsDocument" nillable="true" type="tns:PwsDocument" />
+  <xs:complexType name="PwsDocumentVersion">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q20="http://projectorpsa.com/DataContracts/Shared/Common/" base="q20:PwsDocumentVersionRef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Comments" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreatedByUserIdentity" nillable="true" type="q20:PwsUserRef" />
+          <xs:element minOccurs="0" name="CreatedTimestamp" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="DocumentArchiveIdentity" nillable="true" type="q20:PwsDocumentArchiveRef" />
+          <xs:element minOccurs="0" name="VersionNumber" nillable="true" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsDocumentVersion" nillable="true" type="tns:PwsDocumentVersion" />
+  <xs:complexType name="PwsDocumentDataElement">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q21="http://projectorpsa.com/DataContracts/Shared/Common/" base="q21:PwsBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DataItems" nillable="true" type="tns:ArrayOfPwsDocumentDataItems" />
+          <xs:element minOccurs="0" name="DocumentDataDetail" nillable="true" type="tns:PwsDocumentData" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsDocumentDataElement" nillable="true" type="tns:PwsDocumentDataElement" />
+  <xs:complexType name="ArrayOfPwsDocumentDataItems">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PwsDocumentDataItems" nillable="true" type="tns:PwsDocumentDataItems" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPwsDocumentDataItems" nillable="true" type="tns:ArrayOfPwsDocumentDataItems" />
+  <xs:complexType name="PwsDocumentDataItems">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q22="http://projectorpsa.com/DataContracts/Shared/Common/" base="q22:PwsBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AssociatedItemIdentity" nillable="true" type="q22:PwsFlexItemRef" />
+          <xs:element minOccurs="0" name="Data" nillable="true" type="tns:PwsDocumentAssociationData" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsDocumentDataItems" nillable="true" type="tns:PwsDocumentDataItems" />
+  <xs:complexType name="PwsDocumentAssociationData">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q23="http://projectorpsa.com/DataContracts/Shared/Common/" base="q23:PwsBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Values" nillable="true" type="q23:ArrayOfPwsValue" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsDocumentAssociationData" nillable="true" type="tns:PwsDocumentAssociationData" />
+  <xs:complexType name="PwsDocumentData">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q24="http://projectorpsa.com/DataContracts/Shared/Common/" base="q24:PwsBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AssociatedItemIdentity" nillable="true" type="q24:PwsFlexItemRef" />
+          <xs:element minOccurs="0" name="Associations" nillable="true" type="tns:ArrayOfPwsDocumentAssociation" />
+          <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="AssociatedItemDescription" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsDocumentData" nillable="true" type="tns:PwsDocumentData" />
+  <xs:complexType name="ArrayOfPwsDocumentAssociation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PwsDocumentAssociation" nillable="true" type="tns:PwsDocumentAssociation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPwsDocumentAssociation" nillable="true" type="tns:ArrayOfPwsDocumentAssociation" />
+  <xs:complexType name="PwsDocumentAssociation">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q25="http://projectorpsa.com/DataContracts/Shared/Common/" base="q25:PwsBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AssociatedItemIdentity" nillable="true" type="q25:PwsFlexItemRef" />
+          <xs:element minOccurs="0" name="ReferenceNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReferenceNumberClearFlag" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsDocumentAssociation" nillable="true" type="tns:PwsDocumentAssociation" />
+  <xs:complexType name="ArrayOfPwsAttachmentNote">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PwsAttachmentNote" nillable="true" type="tns:PwsAttachmentNote" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPwsAttachmentNote" nillable="true" type="tns:ArrayOfPwsAttachmentNote" />
+  <xs:complexType name="PwsAttachmentNote">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q26="http://projectorpsa.com/DataContracts/Shared/Common/" base="q26:PwsAttachmentNoteRef">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DocumentData" nillable="true" type="tns:PwsDocumentDataElement" />
+          <xs:element minOccurs="0" name="EditDeleteFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="EditDeletePermissionFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ReceiptLockedFlag" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsAttachmentNote" nillable="true" type="tns:PwsAttachmentNote" />
+  <xs:complexType name="PwsGetDocumentDetailsRq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q27="http://projectorpsa.com/DataContracts/Requests/" base="q27:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q28="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="DocumentIdentity" nillable="true" type="q28:PwsDocumentRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetDocumentDetailsRq" nillable="true" type="tns:PwsGetDocumentDetailsRq" />
+  <xs:complexType name="PwsGetDocumentDetailsRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q29="http://projectorpsa.com/CommonServices/" base="q29:PwsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Document" nillable="true" type="tns:PwsDocument" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetDocumentDetailsRs" nillable="true" type="tns:PwsGetDocumentDetailsRs" />
+  <xs:complexType name="PwsGetDocumentHistoryRq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q30="http://projectorpsa.com/DataContracts/Requests/" base="q30:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q31="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="DocumentIdentity" nillable="true" type="q31:PwsDocumentRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetDocumentHistoryRq" nillable="true" type="tns:PwsGetDocumentHistoryRq" />
+  <xs:complexType name="PwsGetDocumentHistoryRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q32="http://projectorpsa.com/CommonServices/" base="q32:PwsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DocumentVersions" nillable="true" type="tns:ArrayOfPwsDocumentVersion" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetDocumentHistoryRs" nillable="true" type="tns:PwsGetDocumentHistoryRs" />
+  <xs:complexType name="ArrayOfPwsDocumentVersion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PwsDocumentVersion" nillable="true" type="tns:PwsDocumentVersion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPwsDocumentVersion" nillable="true" type="tns:ArrayOfPwsDocumentVersion" />
+  <xs:complexType name="PwsLockDocumentRq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q33="http://projectorpsa.com/DataContracts/Requests/" base="q33:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q34="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="DocumentIdentity" nillable="true" type="q34:PwsDocumentRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsLockDocumentRq" nillable="true" type="tns:PwsLockDocumentRq" />
+  <xs:complexType name="PwsLockDocumentRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q35="http://projectorpsa.com/CommonServices/" base="q35:PwsResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsLockDocumentRs" nillable="true" type="tns:PwsLockDocumentRs" />
+  <xs:complexType name="PwsUnlockDocumentRq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q36="http://projectorpsa.com/DataContracts/Requests/" base="q36:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q37="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="DocumentIdentity" nillable="true" type="q37:PwsDocumentRef" />
+          <xs:element minOccurs="0" name="ForceUnlockFlag" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsUnlockDocumentRq" nillable="true" type="tns:PwsUnlockDocumentRq" />
+  <xs:complexType name="PwsUnlockDocumentRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q38="http://projectorpsa.com/CommonServices/" base="q38:PwsResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsUnlockDocumentRs" nillable="true" type="tns:PwsUnlockDocumentRs" />
+  <xs:complexType name="PwsPurgeDocumentRq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q39="http://projectorpsa.com/DataContracts/Requests/" base="q39:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q40="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="DocumentIdentity" nillable="true" type="q40:PwsDocumentRef" />
+          <xs:element minOccurs="0" name="VersionNumber" nillable="true" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsPurgeDocumentRq" nillable="true" type="tns:PwsPurgeDocumentRq" />
+  <xs:complexType name="PwsPurgeDocumentRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q41="http://projectorpsa.com/CommonServices/" base="q41:PwsResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsPurgeDocumentRs" nillable="true" type="tns:PwsPurgeDocumentRs" />
+  <xs:complexType name="PwsRollbackDocumentRq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q42="http://projectorpsa.com/DataContracts/Requests/" base="q42:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q43="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="DocumentIdentity" nillable="true" type="q43:PwsDocumentRef" />
+          <xs:element minOccurs="0" name="VersionNumber" nillable="true" type="xs:short" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsRollbackDocumentRq" nillable="true" type="tns:PwsRollbackDocumentRq" />
+  <xs:complexType name="PwsRollbackDocumentRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q44="http://projectorpsa.com/CommonServices/" base="q44:PwsResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsRollbackDocumentRs" nillable="true" type="tns:PwsRollbackDocumentRs" />
+  <xs:complexType name="PwsRenameDocumentRq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q45="http://projectorpsa.com/DataContracts/Requests/" base="q45:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q46="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="DocumentIdentity" nillable="true" type="q46:PwsDocumentRef" />
+          <xs:element minOccurs="0" name="NewDocumentName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsRenameDocumentRq" nillable="true" type="tns:PwsRenameDocumentRq" />
+  <xs:complexType name="PwsRenameDocumentRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q47="http://projectorpsa.com/CommonServices/" base="q47:PwsResponse">
+        <xs:sequence>
+          <xs:element xmlns:q48="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="DocumentIdentity" nillable="true" type="q48:PwsDocumentRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsRenameDocumentRs" nillable="true" type="tns:PwsRenameDocumentRs" />
+  <xs:complexType name="PwsSetDocumentUriRq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q49="http://projectorpsa.com/DataContracts/Requests/" base="q49:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q50="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="DocumentIdentity" nillable="true" type="q50:PwsDocumentRef" />
+          <xs:element minOccurs="0" name="NewDocumentUri" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSetDocumentUriRq" nillable="true" type="tns:PwsSetDocumentUriRq" />
+  <xs:complexType name="PwsSetDocumentUriRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q51="http://projectorpsa.com/CommonServices/" base="q51:PwsResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSetDocumentUriRs" nillable="true" type="tns:PwsSetDocumentUriRs" />
+  <xs:complexType name="PwsDeleteDocumentRq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q52="http://projectorpsa.com/DataContracts/Requests/" base="q52:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DeletePermanentlyFlag" type="xs:boolean" />
+          <xs:element xmlns:q53="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="DocumentIdentity" nillable="true" type="q53:PwsDocumentRef" />
+          <xs:element minOccurs="0" name="OverrideLockFlag" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsDeleteDocumentRq" nillable="true" type="tns:PwsDeleteDocumentRq" />
+  <xs:complexType name="PwsDeleteDocumentRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q54="http://projectorpsa.com/CommonServices/" base="q54:PwsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DocumentCount" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="NoteCount" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsDeleteDocumentRs" nillable="true" type="tns:PwsDeleteDocumentRs" />
+  <xs:complexType name="PwsUndeleteDocumentRq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q55="http://projectorpsa.com/DataContracts/Requests/" base="q55:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q56="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="DocumentIdentity" nillable="true" type="q56:PwsDocumentRef" />
+          <xs:element minOccurs="0" name="MakeNameUniqueFlag" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsUndeleteDocumentRq" nillable="true" type="tns:PwsUndeleteDocumentRq" />
+  <xs:complexType name="PwsUndeleteDocumentRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q57="http://projectorpsa.com/CommonServices/" base="q57:PwsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="NewDocumentName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsUndeleteDocumentRs" nillable="true" type="tns:PwsUndeleteDocumentRs" />
+  <xs:complexType name="PwsDeleteDocumentVersionRq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q58="http://projectorpsa.com/DataContracts/Requests/" base="q58:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q59="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="DocumentIdentity" nillable="true" type="q59:PwsDocumentRef" />
+          <xs:element xmlns:q60="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="DocumentVersionIdentity" nillable="true" type="q60:PwsDocumentVersionRef" />
+          <xs:element minOccurs="0" name="OverrideLockFlag" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsDeleteDocumentVersionRq" nillable="true" type="tns:PwsDeleteDocumentVersionRq" />
+  <xs:complexType name="PwsDeleteDocumentVersionRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q61="http://projectorpsa.com/CommonServices/" base="q61:PwsResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsDeleteDocumentVersionRs" nillable="true" type="tns:PwsDeleteDocumentVersionRs" />
+  <xs:complexType name="PwsSetArchiveStatusRq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q62="http://projectorpsa.com/DataContracts/Requests/" base="q62:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ArchiveStatus" nillable="true" type="xs:string" />
+          <xs:element xmlns:q63="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="DocumentArchiveIdentity" nillable="true" type="q63:PwsDocumentArchiveRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSetArchiveStatusRq" nillable="true" type="tns:PwsSetArchiveStatusRq" />
+  <xs:complexType name="PwsSetArchiveStatusRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q64="http://projectorpsa.com/CommonServices/" base="q64:PwsResponse">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSetArchiveStatusRs" nillable="true" type="tns:PwsSetArchiveStatusRs" />
+  <xs:complexType name="PwsSearchDocumentsRq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q65="http://projectorpsa.com/DataContracts/Requests/" base="q65:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FolderTypeCode" nillable="true" type="xs:string" />
+          <xs:element xmlns:q66="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="ProjectIdentity" nillable="true" type="q66:PwsProjectRef" />
+          <xs:element xmlns:q67="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="ResourceIdentity" nillable="true" type="q67:PwsResourceRef" />
+          <xs:element minOccurs="0" name="SearchString" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IncludeInactiveFlag" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSearchDocumentsRq" nillable="true" type="tns:PwsSearchDocumentsRq" />
+  <xs:complexType name="PwsSearchDocumentsRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q68="http://projectorpsa.com/CommonServices/" base="q68:PwsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Results" nillable="true" type="tns:ArrayOfPwsSearchResult" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSearchDocumentsRs" nillable="true" type="tns:PwsSearchDocumentsRs" />
+  <xs:complexType name="ArrayOfPwsSearchResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PwsSearchResult" nillable="true" type="tns:PwsSearchResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPwsSearchResult" nillable="true" type="tns:ArrayOfPwsSearchResult" />
+  <xs:complexType name="PwsSearchResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q69="http://projectorpsa.com/DataContracts/Shared/Common/" base="q69:PwsBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Document" nillable="true" type="tns:PwsDocument" />
+          <xs:element minOccurs="0" name="Filename" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Score" type="xs:int" />
+          <xs:element minOccurs="0" name="Synopsis" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSearchResult" nillable="true" type="tns:PwsSearchResult" />
+  <xs:complexType name="PwsSaveDocumentLinkRq">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q70="http://projectorpsa.com/DataContracts/Requests/" base="q70:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q71="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="DocumentIdentity" nillable="true" type="q71:PwsDocumentRef" />
+          <xs:element minOccurs="0" name="DocumentName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DocumentUri" nillable="true" type="xs:string" />
+          <xs:element xmlns:q72="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="FolderIdentity" nillable="true" type="q72:PwsFolderRef" />
+          <xs:element minOccurs="0" name="OverrideLockFlag" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSaveDocumentLinkRq" nillable="true" type="tns:PwsSaveDocumentLinkRq" />
+  <xs:complexType name="PwsSaveDocumentLinkRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q73="http://projectorpsa.com/CommonServices/" base="q73:PwsResponse">
+        <xs:sequence>
+          <xs:element xmlns:q74="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="DocumentIdentity" nillable="true" type="q74:PwsDocumentRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSaveDocumentLinkRs" nillable="true" type="tns:PwsSaveDocumentLinkRs" />
+</xs:schema>

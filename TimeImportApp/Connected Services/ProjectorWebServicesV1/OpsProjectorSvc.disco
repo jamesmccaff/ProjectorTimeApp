@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="https://secure.projectorpsa.com/OpsProjectorWebSvc/OpsProjectorSvc.asmx?wsdl" docRef="https://secure.projectorpsa.com/OpsProjectorWebSvc/OpsProjectorSvc.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="https://secure.projectorpsa.com/OpsProjectorWebSvc/OpsProjectorSvc.asmx" xmlns:q1="http://www.opsplanning.com/webservices/public/data" binding="q1:OpsProjectorSvcSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="https://secure.projectorpsa.com/OpsProjectorWebSvc/OpsProjectorSvc.asmx" xmlns:q2="http://www.opsplanning.com/webservices/public/data" binding="q2:OpsProjectorSvcSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

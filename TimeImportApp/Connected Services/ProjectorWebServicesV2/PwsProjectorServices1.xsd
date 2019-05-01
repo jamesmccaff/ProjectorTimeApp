@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://projectorpsa.com/DataContracts/Shared/DataAdministration/" elementFormDefault="qualified" targetNamespace="http://projectorpsa.com/DataContracts/Shared/DataAdministration/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd4" namespace="http://projectorpsa.com/DataContracts/Shared/Common/" />
+  <xs:complexType name="ArrayOfPwsResourceAvailableTimeOffElement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PwsResourceAvailableTimeOffElement" nillable="true" type="tns:PwsResourceAvailableTimeOffElement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPwsResourceAvailableTimeOffElement" nillable="true" type="tns:ArrayOfPwsResourceAvailableTimeOffElement" />
+  <xs:complexType name="PwsResourceAvailableTimeOffElement">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://projectorpsa.com/DataContracts/Shared/Common/" base="q1:PwsBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ResourceAvailableTimeOffDetail" nillable="true" type="tns:PwsResourceAvailableTimeOffDetail" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsResourceAvailableTimeOffElement" nillable="true" type="tns:PwsResourceAvailableTimeOffElement" />
+  <xs:complexType name="PwsResourceAvailableTimeOffDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://projectorpsa.com/DataContracts/Shared/Common/" base="q2:PwsBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdditionalAvailableMinutes" type="xs:int" />
+          <xs:element minOccurs="0" name="AsOfDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ResourceIdentity" nillable="true" type="q2:PwsResourceRef" />
+          <xs:element minOccurs="0" name="StartingAvailableMinutes" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="TimeOffReasonIdentity" nillable="true" type="q2:PwsTimeOffReasonRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsResourceAvailableTimeOffDetail" nillable="true" type="tns:PwsResourceAvailableTimeOffDetail" />
+  <xs:complexType name="ArrayOfPwsResourceAvailableTimeOffDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PwsResourceAvailableTimeOffDetail" nillable="true" type="tns:PwsResourceAvailableTimeOffDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPwsResourceAvailableTimeOffDetail" nillable="true" type="tns:ArrayOfPwsResourceAvailableTimeOffDetail" />
+  <xs:complexType name="ArrayOfPwsSaveResourceAvailableTimeOffResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PwsSaveResourceAvailableTimeOffResult" nillable="true" type="tns:PwsSaveResourceAvailableTimeOffResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPwsSaveResourceAvailableTimeOffResult" nillable="true" type="tns:ArrayOfPwsSaveResourceAvailableTimeOffResult" />
+  <xs:complexType name="PwsSaveResourceAvailableTimeOffResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://projectorpsa.com/DataContracts/Shared/Common/" base="q3:PwsBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AsOfDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ErrorDetail" nillable="true" type="q3:PwsErrorDetail" />
+          <xs:element minOccurs="0" name="ResourceIdentity" nillable="true" type="q3:PwsResourceRef" />
+          <xs:element minOccurs="0" name="TimeOffReasonIdentity" nillable="true" type="q3:PwsTimeOffReasonRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSaveResourceAvailableTimeOffResult" nillable="true" type="tns:PwsSaveResourceAvailableTimeOffResult" />
+</xs:schema>

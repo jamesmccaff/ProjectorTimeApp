@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://projectorpsa.com/DataContracts/Requests/" elementFormDefault="qualified" targetNamespace="http://projectorpsa.com/DataContracts/Requests/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd4" namespace="http://projectorpsa.com/DataContracts/Shared/Common/" />
+  <xs:import schemaLocation="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd9" namespace="http://projectorpsa.com/DataContracts/Shared/DataAdministration/" />
+  <xs:import schemaLocation="https://secure.projectorpsa.com/OpsProjectorWcfSvc/PwsProjectorServices.svc?xsd=xsd5" namespace="http://projectorpsa.com/CommonServices/" />
+  <xs:complexType name="PwsRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://projectorpsa.com/DataContracts/Shared/Common/" base="q1:PwsBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RequestId" type="xs:int" />
+          <xs:element minOccurs="0" name="SessionTicket" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsRequest" nillable="true" type="tns:PwsRequest" />
+  <xs:complexType name="PwsGetResourceListRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IncludeInactiveFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MaxRowsToReturn" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="QueryString" nillable="true" type="xs:string" />
+          <xs:element xmlns:q2="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="ResourceIdentity" nillable="true" type="q2:PwsResourceRef" />
+          <xs:element minOccurs="0" name="LastUpdatedSinceTimestamp" nillable="true" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetResourceListRq" nillable="true" type="tns:PwsGetResourceListRq" />
+  <xs:complexType name="PwsGetResourceRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://projectorpsa.com/DataContracts/Shared/Common/" name="ResourceIdentities" nillable="true" type="q3:ArrayOfPwsResourceRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetResourceRq" nillable="true" type="tns:PwsGetResourceRq" />
+  <xs:complexType name="PwsSaveResourceRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllowDuplicateInitialsFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ExpenseApprovalUserClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ExpenseEntryDelegateUserClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ExpenseReportVendorClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="FullDetailFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ManagerUserClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="PurgeFutureResourceHistoryFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="RdcExceptionClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="RequestedTimeOffApprovalUserClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ResetCalendarAuthenticationTokenFlag" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q4="http://projectorpsa.com/DataContracts/Shared/Common/" name="Resource" nillable="true" type="q4:PwsResourceDetail" />
+          <xs:element minOccurs="0" name="ResourceTimestamp" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SkillApprovalUserClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SubcontractorInvoiceVendorClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="TimeAndCostGlccOverrideClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="TimeEntryDelegateUserClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="TimecardApprovalUserClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="WorkingScheduleOverrideClearFlag" nillable="true" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSaveResourceRq" nillable="true" type="tns:PwsSaveResourceRq" />
+  <xs:complexType name="PwsDeleteResourceRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PurgeFutureResourceHistoryFlag" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q5="http://projectorpsa.com/DataContracts/Shared/Common/" name="ResourceIdentity" nillable="true" type="q5:PwsResourceRef" />
+          <xs:element minOccurs="0" name="ResourceTimestamp" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TerminationDateIfInUse" nillable="true" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsDeleteResourceRq" nillable="true" type="tns:PwsDeleteResourceRq" />
+  <xs:complexType name="PwsSaveResourceSkillLevelsRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://projectorpsa.com/DataContracts/Shared/Common/" name="ResourceIdentity" nillable="true" type="q6:PwsResourceRef" />
+          <xs:element minOccurs="0" name="ResourceTimestamp" nillable="true" type="xs:string" />
+          <xs:element xmlns:q7="http://projectorpsa.com/DataContracts/Shared/Common/" name="SkillLevels" nillable="true" type="q7:ArrayOfPwsResourceSkillLevel" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSaveResourceSkillLevelsRq" nillable="true" type="tns:PwsSaveResourceSkillLevelsRq" />
+  <xs:complexType name="PwsSaveResourceHistoryRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q8="http://projectorpsa.com/DataContracts/Shared/Common/" name="History" nillable="true" type="q8:ArrayOfPwsResourceHistory" />
+          <xs:element xmlns:q9="http://projectorpsa.com/DataContracts/Shared/Common/" name="ResourceIdentity" nillable="true" type="q9:PwsResourceRef" />
+          <xs:element minOccurs="0" name="ResourceTimestamp" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SetNullValuesFromResourceTypeFlag" nillable="true" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSaveResourceHistoryRq" nillable="true" type="tns:PwsSaveResourceHistoryRq" />
+  <xs:complexType name="PwsGetExpenseTypeGroupListRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q10="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="ExpenseTypeGroupIdentity" nillable="true" type="q10:PwsExpenseTypeGroupRef" />
+          <xs:element minOccurs="0" name="IncludeInactiveFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MaxRowsToReturn" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="QueryString" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetExpenseTypeGroupListRq" nillable="true" type="tns:PwsGetExpenseTypeGroupListRq" />
+  <xs:complexType name="PwsGetResourceAvailableTimeOffRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:dateTime" />
+          <xs:element xmlns:q11="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="ResourceIdentity" nillable="true" type="q11:PwsResourceRef" />
+          <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
+          <xs:element xmlns:q12="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="TimeOffReasonIdentity" nillable="true" type="q12:PwsTimeOffReasonRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetResourceAvailableTimeOffRq" nillable="true" type="tns:PwsGetResourceAvailableTimeOffRq" />
+  <xs:complexType name="PwsSaveResourceAvailableTimeOffRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AbortOnFailureFlag" type="xs:boolean" />
+          <xs:element xmlns:q13="http://projectorpsa.com/DataContracts/Shared/DataAdministration/" minOccurs="0" name="AvailableTimeOffDetail" nillable="true" type="q13:ArrayOfPwsResourceAvailableTimeOffDetail" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSaveResourceAvailableTimeOffRq" nillable="true" type="tns:PwsSaveResourceAvailableTimeOffRq" />
+  <xs:complexType name="PwsDeleteResourceAvailableTimeOffRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:dateTime" />
+          <xs:element xmlns:q14="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="ResourceIdentity" nillable="true" type="q14:PwsResourceRef" />
+          <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
+          <xs:element xmlns:q15="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="TimeOffReasonIdentity" nillable="true" type="q15:PwsTimeOffReasonRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsDeleteResourceAvailableTimeOffRq" nillable="true" type="tns:PwsDeleteResourceAvailableTimeOffRq" />
+  <xs:complexType name="PwsAuthenticateRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CultureName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Fingerprint" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UtcOffsetMinutes" nillable="true" type="xs:short" />
+          <xs:element minOccurs="0" name="CrossoverTicket" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsAuthenticateRq" nillable="true" type="tns:PwsAuthenticateRq" />
+  <xs:complexType name="PwsUnauthenticateRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsUnauthenticateRq" nillable="true" type="tns:PwsUnauthenticateRq" />
+  <xs:complexType name="PwsImpersonateRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q16="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="ImpersonateAccountIdentity" nillable="true" type="q16:PwsAccountRef" />
+          <xs:element minOccurs="0" name="ReasonText" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsImpersonateRq" nillable="true" type="tns:PwsImpersonateRq" />
+  <xs:complexType name="PwsSaveUserDefinedFieldsRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ProjectorLockSetId" nillable="true" type="xs:int" />
+          <xs:element xmlns:q17="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="SaveOrders" nillable="true" type="q17:ArrayOfPwsSaveUserDefinedFieldsOrder" />
+          <xs:element minOccurs="0" name="UdfType" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSaveUserDefinedFieldsRq" nillable="true" type="tns:PwsSaveUserDefinedFieldsRq" />
+  <xs:complexType name="PwsGetDefaultFilterSearchRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreateIfNotFoundFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="CustomizedSearchOverrideFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="FilterTag" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetDefaultFilterSearchRq" nillable="true" type="tns:PwsGetDefaultFilterSearchRq" />
+  <xs:complexType name="PwsSaveDefaultFilterSearchRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CustomizedSearchOverrideFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="FullDetailFlag" type="xs:boolean" />
+          <xs:element xmlns:q18="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="Search" nillable="true" type="q18:PwsFilterSearch" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSaveDefaultFilterSearchRq" nillable="true" type="tns:PwsSaveDefaultFilterSearchRq" />
+  <xs:complexType name="PwsAcquireProjectorLocksRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LockDurationSeconds" type="xs:int" />
+          <xs:element xmlns:q19="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="Locks" nillable="true" type="q19:ArrayOfPwsProjectorLockRequest" />
+          <xs:element xmlns:q20="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="LocksToSteal" nillable="true" type="q20:ArrayOfPwsEntityLockSummary" />
+          <xs:element minOccurs="0" name="ProjectorLockSetId" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsAcquireProjectorLocksRq" nillable="true" type="tns:PwsAcquireProjectorLocksRq" />
+  <xs:complexType name="PwsCheckProjectorLocksRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q21="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="Locks" nillable="true" type="q21:ArrayOfPwsProjectorLockRequest" />
+          <xs:element xmlns:q22="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="LocksToSteal" nillable="true" type="q22:ArrayOfPwsEntityLockSummary" />
+          <xs:element minOccurs="0" name="ProjectorLockSetId" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsCheckProjectorLocksRq" nillable="true" type="tns:PwsCheckProjectorLocksRq" />
+  <xs:complexType name="PwsReleaseProjectorLocksRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ProjectorLockSetId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsReleaseProjectorLocksRq" nillable="true" type="tns:PwsReleaseProjectorLocksRq" />
+  <xs:complexType name="PwsRenewProjectorLocksRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="LockDurationSeconds" type="xs:int" />
+          <xs:element minOccurs="0" name="ProjectorLockSetId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsRenewProjectorLocksRq" nillable="true" type="tns:PwsRenewProjectorLocksRq" />
+  <xs:complexType name="PwsGetAccountingPeriodListRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q23="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="AccountingPeriodIdentity" nillable="true" type="q23:PwsAccountingPeriodRef" />
+          <xs:element minOccurs="0" name="IncludeFullyClosedFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IncludeOpenForAdjustmentsFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IncludeOpenForApTransactionsFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IncludeOpenForArTransactionsFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IncludeOpenForCostFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IncludeOpenForGlTransactionsFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IncludeOpenForTimeFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MaxRowsToReturn" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="QueryString" nillable="true" type="xs:string" />
+          <xs:element xmlns:q24="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="CompanyIdentity" nillable="true" type="q24:PwsCompanyRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetAccountingPeriodListRq" nillable="true" type="tns:PwsGetAccountingPeriodListRq" />
+  <xs:complexType name="PwsGetAccountingPeriodListRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q25="http://projectorpsa.com/CommonServices/" base="q25:PwsResponse">
+        <xs:sequence>
+          <xs:element xmlns:q26="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="AccountingPeriods" nillable="true" type="q26:ArrayOfPwsAccountingPeriodSummary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetAccountingPeriodListRs" nillable="true" type="tns:PwsGetAccountingPeriodListRs" />
+  <xs:complexType name="PwsGetClientListRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q27="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="ClientIdentity" nillable="true" type="q27:PwsClientRef" />
+          <xs:element minOccurs="0" name="IncludeInactiveFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MaxRowsToReturn" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="QueryString" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LastUpdatedSinceTimestamp" nillable="true" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetClientListRq" nillable="true" type="tns:PwsGetClientListRq" />
+  <xs:complexType name="PwsGetClientRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q28="http://projectorpsa.com/DataContracts/Shared/Common/" name="ClientIdentities" nillable="true" type="q28:ArrayOfPwsClientRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetClientRq" nillable="true" type="tns:PwsGetClientRq" />
+  <xs:complexType name="PwsSaveClientRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q29="http://projectorpsa.com/DataContracts/Shared/Common/" name="Client" nillable="true" type="q29:PwsClientDetail" />
+          <xs:element minOccurs="0" name="FullDetailFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ParentClientClearFlag" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSaveClientRq" nillable="true" type="tns:PwsSaveClientRq" />
+  <xs:complexType name="PwsDeleteClientRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CascadeDeleteFlag" type="xs:boolean" />
+          <xs:element xmlns:q30="http://projectorpsa.com/DataContracts/Shared/Common/" name="ClientIdentity" nillable="true" type="q30:PwsClientRef" />
+          <xs:element minOccurs="0" name="InactivateIfInuseFlag" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsDeleteClientRq" nillable="true" type="tns:PwsDeleteClientRq" />
+  <xs:complexType name="PwsGetCompanyListRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q31="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="CompanyIdentity" nillable="true" type="q31:PwsCompanyRef" />
+          <xs:element minOccurs="0" name="MaxRowsToReturn" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="QueryString" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetCompanyListRq" nillable="true" type="tns:PwsGetCompanyListRq" />
+  <xs:complexType name="PwsGetCompanyListRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q32="http://projectorpsa.com/CommonServices/" base="q32:PwsResponse">
+        <xs:sequence>
+          <xs:element xmlns:q33="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="Companies" nillable="true" type="q33:ArrayOfPwsCompanySummary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetCompanyListRs" nillable="true" type="tns:PwsGetCompanyListRs" />
+  <xs:complexType name="PwsGetCostCenterListRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q34="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="CostCenterIdentity" nillable="true" type="q34:PwsCostCenterRef" />
+          <xs:element minOccurs="0" name="IncludeAncestorsFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IncludeEngagementCostCentersFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IncludeInactiveFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IncludeResourceCostCentersFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="QueryString" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IncludeNonResourceNonEngagementCostCentersFlag" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetCostCenterListRq" nillable="true" type="tns:PwsGetCostCenterListRq" />
+  <xs:complexType name="PwsGetCostCenterListRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q35="http://projectorpsa.com/CommonServices/" base="q35:PwsResponse">
+        <xs:sequence>
+          <xs:element xmlns:q36="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="CostCenters" nillable="true" type="q36:ArrayOfPwsCostCenterSummary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetCostCenterListRs" nillable="true" type="tns:PwsGetCostCenterListRs" />
+  <xs:complexType name="PwsGetDepartmentListRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q37="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="DepartmentIdentity" nillable="true" type="q37:PwsDepartmentRef" />
+          <xs:element minOccurs="0" name="MaxRowsToReturn" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="QueryString" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetDepartmentListRq" nillable="true" type="tns:PwsGetDepartmentListRq" />
+  <xs:complexType name="PwsGetTitleListRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IncludeInactiveFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MaxRowsToReturn" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="QueryString" nillable="true" type="xs:string" />
+          <xs:element xmlns:q38="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="TitleIdentity" nillable="true" type="q38:PwsTitleRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetTitleListRq" nillable="true" type="tns:PwsGetTitleListRq" />
+  <xs:complexType name="PwsGetEngagementTypeListRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q39="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="EcCostCenterIdentity" nillable="true" type="q39:PwsCostCenterRef" />
+          <xs:element xmlns:q40="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="EngagementTypeIdentity" nillable="true" type="q40:PwsEngagementTypeRef" />
+          <xs:element minOccurs="0" name="IncludeInactiveFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MaxRowsToReturn" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="QueryString" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetEngagementTypeListRq" nillable="true" type="tns:PwsGetEngagementTypeListRq" />
+  <xs:complexType name="PwsGetEngagementTypeListRs">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q41="http://projectorpsa.com/CommonServices/" base="q41:PwsResponse">
+        <xs:sequence>
+          <xs:element xmlns:q42="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="EngagementTypes" nillable="true" type="q42:ArrayOfPwsEngagementTypeSummary" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetEngagementTypeListRs" nillable="true" type="tns:PwsGetEngagementTypeListRs" />
+  <xs:complexType name="PwsGetUserListRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IncludeInactiveFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LastUpdatedSinceTimestamp" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="MaxRowsToReturn" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="QueryString" nillable="true" type="xs:string" />
+          <xs:element xmlns:q43="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="UserIdentity" nillable="true" type="q43:PwsUserRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetUserListRq" nillable="true" type="tns:PwsGetUserListRq" />
+  <xs:complexType name="PwsGetUserRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q44="http://projectorpsa.com/DataContracts/Shared/Common/" name="UserIdentities" nillable="true" type="q44:ArrayOfPwsUserRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetUserRq" nillable="true" type="tns:PwsGetUserRq" />
+  <xs:complexType name="PwsSaveUserRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdditionalUserTypesClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ClientClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="EndDateClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="FullDetailFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="LoginNameClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MiddleNameClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MobilePhoneClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="NewPassword" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NewUserDisplayName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NewUserReferenceSystemId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OfficePhoneClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="OtherContactInformationClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="StartDateClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="TemporaryPasswordFlag" nillable="true" type="xs:boolean" />
+          <xs:element xmlns:q45="http://projectorpsa.com/DataContracts/Shared/Common/" name="User" nillable="true" type="q45:PwsUserDetail" />
+          <xs:element minOccurs="0" name="UserReferenceSystemIdClearFlag" nillable="true" type="xs:boolean" />
+          <xs:element minOccurs="0" name="UserTimestamp" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSaveUserRq" nillable="true" type="tns:PwsSaveUserRq" />
+  <xs:complexType name="PwsDeleteUserRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="EndDateIfInUse" nillable="true" type="xs:dateTime" />
+          <xs:element xmlns:q46="http://projectorpsa.com/DataContracts/Shared/Common/" name="UserIdentity" nillable="true" type="q46:PwsUserRef" />
+          <xs:element minOccurs="0" name="UserTimestamp" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsDeleteUserRq" nillable="true" type="tns:PwsDeleteUserRq" />
+  <xs:complexType name="PwsSetUserPermissionsNotificationsRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q47="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="CostCenterNotificationSettings" nillable="true" type="q47:ArrayOfPwsCostCenterNotificationSettingDetail" />
+          <xs:element xmlns:q48="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="CostCenterPermissionSettings" nillable="true" type="q48:ArrayOfPwsCostCenterPermissionSettingDetail" />
+          <xs:element xmlns:q49="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="GlobalNotificationSettings" nillable="true" type="q49:ArrayOfPwsGlobalNotificationSettingDetail" />
+          <xs:element xmlns:q50="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="GlobalPermissionSettings" nillable="true" type="q50:ArrayOfPwsGlobalPermissionSettingDetail" />
+          <xs:element xmlns:q51="http://projectorpsa.com/DataContracts/Shared/Common/" name="UserIdentity" nillable="true" type="q51:PwsUserRef" />
+          <xs:element minOccurs="0" name="UserTimestamp" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSetUserPermissionsNotificationsRq" nillable="true" type="tns:PwsSetUserPermissionsNotificationsRq" />
+  <xs:complexType name="PwsGetVendorListRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IncludeInactiveFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IncludeResourceVendorsFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MaxRowsToReturn" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="QueryString" nillable="true" type="xs:string" />
+          <xs:element xmlns:q52="http://projectorpsa.com/DataContracts/Shared/Common/" minOccurs="0" name="VendorIdentity" nillable="true" type="q52:PwsVendorRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetVendorListRq" nillable="true" type="tns:PwsGetVendorListRq" />
+  <xs:complexType name="PwsGetVendorRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element xmlns:q53="http://projectorpsa.com/DataContracts/Shared/Common/" name="VendorIdentities" nillable="true" type="q53:ArrayOfPwsVendorRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsGetVendorRq" nillable="true" type="tns:PwsGetVendorRq" />
+  <xs:complexType name="PwsSaveVendorRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ClearResourceVendorPayeesFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ClearVendorReconciliationGlAcctFlag" type="xs:boolean" />
+          <xs:element minOccurs="0" name="FullDetailFlag" type="xs:boolean" />
+          <xs:element xmlns:q54="http://projectorpsa.com/DataContracts/Shared/Common/" name="Vendor" nillable="true" type="q54:PwsVendorDetail" />
+          <xs:element minOccurs="0" name="OverrideCostCardWarningFlag" nillable="true" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsSaveVendorRq" nillable="true" type="tns:PwsSaveVendorRq" />
+  <xs:complexType name="PwsDeleteVendorRq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PwsRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="InactivateIfInuseFlag" type="xs:boolean" />
+          <xs:element xmlns:q55="http://projectorpsa.com/DataContracts/Shared/Common/" name="VendorIdentity" nillable="true" type="q55:PwsVendorRef" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PwsDeleteVendorRq" nillable="true" type="tns:PwsDeleteVendorRq" />
+</xs:schema>

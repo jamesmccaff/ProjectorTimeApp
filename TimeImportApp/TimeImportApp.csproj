@@ -1,0 +1,1043 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{837907A8-CC03-4CED-B9E4-5FBC0AAA1ED8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TimeImportApp</RootNamespace>
+    <AssemblyName>TimeImportApp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework6.Npgsql, Version=3.2.0.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework6.Npgsql.3.2.0\lib\net45\EntityFramework6.Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.1.1345, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.5.1\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=4.0.6.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.4.0.6\lib\net451\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.2\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Connected Services\ProjectorWebServicesV2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseHelper.cs" />
+    <Compile Include="Views\InputPage.xaml.cs">
+      <DependentUpon>InputPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IAPIHelper.cs" />
+    <Compile Include="Interfaces\ICSVHelper.cs" />
+    <Compile Include="Interfaces\IDatabaseHelper.cs" />
+    <Compile Include="Domain\MIPACProject.cs" />
+    <Compile Include="Views\ProcessingPage.xaml.cs">
+      <DependentUpon>ProcessingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\ProjectorIntegrationcContext.cs" />
+    <Compile Include="Domain\ProjectorProject.cs" />
+    <Compile Include="Domain\Session.cs" />
+    <Compile Include="Domain\SharedProject.cs" />
+    <Page Include="Dictionary1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InputPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="APIHelper.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Connected Services\ProjectorWebServicesV1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="CSVHelper.cs" />
+    <Compile Include="Domain\Job.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\ProcessingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Domain\Person.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Connected Services\ProjectorWebServicesV1\OpsProjectorSvc.wsdl" />
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.AddProjectCostPlanBucketResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.AddProjectCostPlanBucketRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.AddProjectCostPlanResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.AddProjectCostPlanRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportBookingsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportBookingsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportClientsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportClientsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportCostCardsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportCostCardsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportExpenseReportsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportExpenseReportsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportIncrementalTimeFeedResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportIncrementalTimeFeedRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportInvoicesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportInvoicesRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportOlapEprRecordsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportOlapEprRecordsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportOlapGinsuRecordsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportOlapGinsuRecordsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportOlapUtilizationRecordsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportOlapUtilizationRecordsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportProjectListResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportProjectListRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportProjectRatesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportProjectRatesRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportRateAndRdcCardsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportRateAndRdcCardsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportResourcesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportResourcesRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportRoleRateOverridesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportRoleRateOverridesRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportRolesResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportRolesRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportScheduledTimeoffResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportScheduledTimeoffRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportTimeCardsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportTimeCardsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportTimeoffCardsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.ExportTimeoffCardsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.GetNextApTransactionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.GetNextApTransactionRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.GetNextArTransactionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.GetNextArTransactionRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.GetNextGlTransactionResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.GetNextGlTransactionRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.GetReportStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.GetReportStatusRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.GetUdfValuesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.GetUdfValuesRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.GetWebServiceUrlResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.GetWebServiceUrlRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.IssueInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.IssueInvoiceRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsCloseCostCardBatchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsCloseCostCardBatchRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsCloseTimeCardBatchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsCloseTimeCardBatchRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsDeleteTimeOffResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsDeleteTimeOffRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsGetResourceSkillsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsGetResourceSkillsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsImportCostCardsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsImportCostCardsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsImportFxRatesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsImportFxRatesRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsImportTimeCardsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsImportTimeCardsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsOpenCostCardBatchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsOpenCostCardBatchRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsOpenTimeCardBatchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsOpenTimeCardBatchRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsTerminateResourceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsTerminateResourceRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsUpdateClientResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsUpdateClientRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsUpdateEngagementResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsUpdateEngagementRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsUpdateProjectResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsUpdateProjectRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsUpdateResourceDetailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsUpdateResourceDetailRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsUpdateResourceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsUpdateResourceRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsUpdateResourceSkillRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsUpdateResourceSkillsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsUpdateResourceTimeOffResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsUpdateResourceTimeOffRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsUpdateResourceUDFRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.OpsUpdateResourceUDFsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.SetUserPasswordResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.SetUserPasswordRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.SubmitBatchExportRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.SubmitOlapEprExportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.SubmitOlapGinsuExportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.SubmitOlapUtilizationExportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.SubmitReportSpecResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.SubmitReportSpecRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.UpdateExpenseReportTransactionStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.UpdateExpenseReportTransactionStatusRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.UpdateGeneralLedgerTransactionStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.UpdateGeneralLedgerTransactionStatusRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.UpdateInvoicePaymentStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.UpdateInvoicePaymentStatusRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.UpdateInvoiceTransactionStatusResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.UpdateInvoiceTransactionStatusRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.UpdateUdfValueResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.UpdateUdfValueRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.UpdateUnissuedInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.UpdateUnissuedInvoiceRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.VoidInvoiceResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV1\TimeImportApp.ProjectorWebServicesV1.VoidInvoiceRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\PwsProjectorServices.wsdl" />
+    <None Include="Connected Services\ProjectorWebServicesV2\PwsProjectorServices.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\PwsProjectorServices1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\PwsProjectorServices10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\PwsProjectorServices11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\PwsProjectorServices12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\PwsProjectorServices13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\PwsProjectorServices2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\PwsProjectorServices3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\PwsProjectorServices4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\PwsProjectorServices5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\PwsProjectorServices6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\PwsProjectorServices7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\PwsProjectorServices8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\PwsProjectorServices9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsAcquireProjectorLocksRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsAddProjectNoteRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsApplyRevRecAdjustmentRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsAuthenticateRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsCheckProjectorLocksRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsCreateProjectCostBaselineRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsCreateProjectTimeBaselineRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteClientRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteContractLineItemMilestoneRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteContractLineItemRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteDocumentRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteDocumentVersionRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteEngagementRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteExpenseDocumentCostCardRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteExpenseDocumentRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteProjectCostBaselineRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteProjectRoleRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteProjectRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteProjectTaskRoleRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteProjectTaskRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteProjectTaskTypeRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteProjectTimeBaselineRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteResourceAvailableTimeOffRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteResourceRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteUserRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDeleteVendorRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsDismissTimeAlertsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsExportIncrementalTimeFeedRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetAccountingPeriodListRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetAlertsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetBaselineBucketDateIntervalsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetClientListRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetClientRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetCompanyListRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetContractLineItemRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetCostAlertsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetCostCardsByExternalGroupingIdentifierRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetCostCenterListRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetCurrenciesRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetDashboardParametersRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetDefaultFilterSearchRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetDefaultVatPercentageRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetDepartmentListRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetDocumentDetailsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetDocumentHistoryRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetDocumentManagementParametersRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetEngagementListRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetEngagementRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetEngagementTypeListRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetExpenseDocumentApproversRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetExpenseDocumentCostCardRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetExpenseDocumentRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetExpenseEntryParametersRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetExpenseReportsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetExpenseTypeGroupListRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetExpenseTypesRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetFolderContentsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetFolderRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetLocationsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetMileageRateRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetOnBehalfOfResourcesRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetPostedInvoicesRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetProjectContactsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetProjectCostBaselineRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetProjectInfoForResourceExpenseEntryRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetProjectInfoForResourceTimeEntryRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetProjectIssueCategoriesRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetProjectIssueHistoryRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetProjectIssueListRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetProjectIssueStatusesRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetProjectListRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetProjectRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetProjectTimeBaselineRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetProjectWorkspaceAlertsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetProjectWorkspaceInfoRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetProjectWorkspacesRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetReportOutputRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetResourceAvailableTimeOffRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetResourceCostCardsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetResourceExpenseImportPoolRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetResourceExpenseScheduleRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetResourceListRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetResourceRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetResourceScheduleRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetResourceUtilizationSummaryRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetResourceWorkingScheduleRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetTimeAlertsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetTimeCardApproversRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetTimeCardHistoryRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetTimeCardsByExternalGroupingIdentifierRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetTimeCardsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetTimeEntryParametersRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetTimeEntryProjectRoleRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetTimeEntryTimeOffRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetTitleListRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetUserListRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetUserRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetVendorListRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetVendorRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsGetVendorsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsImpersonateRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsLockDocumentRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsMarkPaymentVouchersReceivedRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsPurgeDocumentRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsReleaseProjectorLocksRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsRenameDocumentRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsRenewProjectorLocksRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsRollbackDocumentRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveClientRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveContractLineItemMilestoneRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveContractLineItemRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveDefaultFilterSearchRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveDocumentLinkRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveEngagementRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveExpenseDocumentCostCardRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveExpenseDocumentRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveProjectIssuesRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveProjectRoleRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveProjectRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveProjectTaskRoleRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveProjectTaskRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveProjectTaskTypeRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveResourceAvailableTimeOffRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveResourceExpenseImportPoolItemsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveResourceHistoryRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveResourceRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveResourceSkillLevelsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveTimeCardsAndRtoRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveTimeCardsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveUserDefinedFieldsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveUserRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSaveVendorRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSearchDocumentsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSearchProjectsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSetArchiveStatusRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSetCostCardApprovalWorkflowStatusRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSetCostCardInvoiceWorkflowStatusRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSetCostCardPaymentWorkflowStatusRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSetDocumentUriRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSetTimeCardApprovalWorkflowStatusRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSetUserPermissionsNotificationsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsSubmitTimeCardsRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsUnauthenticateRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsUndeleteDocumentRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsUnlockDocumentRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsUpdateProjectCostBaselineRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProjectorWebServicesV2\TimeImportApp.ProjectorWebServicesV2.PwsUpdateProjectTimeBaselineRs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ProjectorWebServicesV1\" />
+    <WCFMetadataStorage Include="Connected Services\ProjectorWebServicesV2\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProjectorWebServicesV1\OpsProjectorSvc.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProjectorWebServicesV1\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProjectorWebServicesV1\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProjectorWebServicesV1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProjectorWebServicesV2\PwsProjectorServices.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProjectorWebServicesV2\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProjectorWebServicesV2\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProjectorWebServicesV2\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
