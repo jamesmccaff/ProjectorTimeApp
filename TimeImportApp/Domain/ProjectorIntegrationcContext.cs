@@ -4,16 +4,18 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TimeImportApp.Domain;
 
 namespace TimeImportApp
 {
-    public class ProjectorIntegrationcContext : DbContext
+    public class ProjectorIntegrationContext : DbContext
     {
         public DbSet<ProjectorProject> ProjectorProjects { get; set; }
         public DbSet<MIPACProject> MIPACProjects { get;set; }
         public DbSet<SharedProject> SharedProjects { get; set; }
+        public DbSet<Error> Errors { get; set; }
 
-        public ProjectorIntegrationcContext() : base(nameOrConnectionString: "Default")
+        public ProjectorIntegrationContext() : base(nameOrConnectionString: "Default")
         {
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

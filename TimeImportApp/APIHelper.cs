@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TimeImportApp.Domain;
 using TimeImportApp.ProjectorWebServicesV2;
 
 namespace TimeImportApp
@@ -167,6 +168,16 @@ namespace TimeImportApp
             getUserRq.UserIdentities = userArray;
             PwsGetUserRs getUserRs = pwsProjectorServices.PwsGetUser(getUserRq);
             return getUserRs.Users[0];
+        }
+
+        public bool AddTimeCards(List<Person> people)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ErrorOccurance> GetErrors()
+        {
+            throw new NotImplementedException();
         }
     }
 }

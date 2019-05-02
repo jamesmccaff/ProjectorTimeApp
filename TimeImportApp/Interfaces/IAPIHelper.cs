@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TimeImportApp.Domain;
 using TimeImportApp.ProjectorWebServicesV2;
 
 namespace TimeImportApp
@@ -18,5 +19,7 @@ namespace TimeImportApp
         string GenerateSessionKey(IPwsProjectorServices pwsProjectorServices, string username, string password, string accountCode);
         PwsGetExpenseReportsRs GetExpenseReport(string sessionKey);
         PwsUserElement GetUserDetails(string userName, string sessionKey);
+        bool AddTimeCards(List<Person> people);
+        List<ErrorOccurance> GetErrors();
     }   
 }

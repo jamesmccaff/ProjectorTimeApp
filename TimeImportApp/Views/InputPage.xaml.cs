@@ -65,12 +65,6 @@ namespace TimeImportApp.Views
             }
             else
             {
-                //Authenticate then start processing 
-                //if (!apiHelper.AuthenticateUser(accountCodeTextBox.Text, usernameTextBox.Text, passwordTextBox.Password))
-                //{
-                //    errorMessageLabel.Text = "Authentication Unsuccessful: Please check login details.";
-                //}
-
                 if (apiHelper.GetSessionTicket(accountCodeTextBox.Text, usernameTextBox.Text, passwordTextBox.Password) == null)
                 {
                     errorMessageLabel.Text = "Authentication Unsuccessful: Please check login details.";
@@ -81,6 +75,37 @@ namespace TimeImportApp.Views
                     //Process the CSV File
                     NavigationService.Navigate(new ProcessingPage());
                     var people=csvHelper.ParseReportToObjects(filePath);
+                    bool timecardsAddedSuccessfuly = apiHelper.AddTimeCards(people);
+
+                    if (timecardsAddedSuccessfuly)
+                    {
+
+                    }
+                    else
+                    {
+                        var errors = apiHelper.GetErrors();
+                        foreach(var error in errors)
+                        {
+                            //Type 1
+                            //Scenario: Job not in MIPAC - Comment field incorrect format 
+                            //Action: Reject perosons's timecard and ask for manual entry at end
+
+                            //Type 2
+                            //Scenario: Job not in MIPAC - Comment field correct format - Job doesn't exist in Projector
+                            //Action: Reject perosons's timecard and ask for manual entry at end
+
+
+                            //Type 3
+                            //Scenario: Job in MIPAC - Job in lookup table - Projector code no longer working
+                            //Action: Reject perosons's timecard and ask for manual entry at end
+
+                            //Type 4:
+                            //Scenario: Job in MIPAC - Job not in lookup table 
+                            //Action: Verify from user if job is in projector
+                                //YES: Show mipac code+name and ask user to enter projector code+name. Save project to db. Proceed with adding timecard. 
+                                //NO: Reject perosons's timecard and ask for manual entry at end
+                        }
+                    }
                 }
             }
         }
