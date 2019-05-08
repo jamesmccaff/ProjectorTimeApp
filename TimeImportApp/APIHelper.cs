@@ -12,6 +12,7 @@ namespace TimeImportApp
     {
         private PwsProjectorServicesClient pwsProjectorServices;
         private PwsAuthenticateRs authenticationResponse;
+        private Dictionary<Person, List<PwsSaveTimecardResult>> failedTimecards;
 
         public APIHelper()
         {
@@ -170,14 +171,118 @@ namespace TimeImportApp
             return getUserRs.Users[0];
         }
 
-        public bool AddTimeCards(List<Person> people)
+        private PwsResourceElement[] GetProjectorResource(List<Person> person, string sessionTicket)
         {
-            throw new NotImplementedException();
+            PwsResourceRef[] userList = new PwsResourceRef[person.Count];
+            for (int i = 0; i < person.Count; i++)
+            {
+                userList[i] = new PwsResourceRef()
+                {
+                    ResourceDisplayName = person[i].Name
+                };
+            }
+            PwsGetResourceRq getResourceRq = new PwsGetResourceRq()
+            {
+                SessionTicket = sessionTicket,
+                ResourceIdentities = userList
+            };
+            return pwsProjectorServices.PwsGetResource(getResourceRq).Resources;
         }
 
-        public List<ErrorOccurance> GetErrors()
+        private PwsProjectElement GetPwsProject(string projectCode, string sessionTicket)
         {
-            throw new NotImplementedException();
+            PwsGetProjectRq getProjectRq = new PwsGetProjectRq();
+            PwsProjectRef projectRef = new PwsProjectRef();
+            projectRef.ProjectCode = projectCode;
+            PwsProjectRef[] projectRefs = { projectRef };
+            getProjectRq.ProjectIdentities = projectRefs;
+            getProjectRq.SessionTicket = sessionTicket;
+            PwsGetProjectRs getProjectRs = pwsProjectorServices.PwsGetProject(getProjectRq);
+            return getProjectRs.Projects[0];
+        }
+
+        private PwsTimecardDetail[] createTimeCards(Person person, PwsResourceElement pwsUser)
+        {
+            PwsTimecardDetail[] timecardDetails = new PwsTimecardDetail[person.Jobs.Count];
+            for (int i = 0; i < person.Jobs.Count; i++)
+            {
+                PwsProjectElement pwsProject = GetPwsProject(person.Jobs[i].Code, "");
+                if (pwsProject != null)
+                {
+                    PwsTimecardDetail timeCard = new PwsTimecardDetail();
+                    timeCard.CardStatus = "D";
+                    timeCard.ProjectIdentity = new PwsProjectRef() { ProjectUid = pwsProject.ProjectDetail.ProjectUid };
+                    timeCard.ProjectRateTypeIdentity = new PwsProjectRateTypeRef() { ProjectRateTypeUid = pwsProject.RateTypes[0].ProjectRateTypeDetail.ProjectRateTypeUid };
+                    timeCard.ProjectTaskIdentity = new PwsProjectTaskRef() { ProjectTaskUid = pwsProject.Tasks[0].ProjectTaskDetail.ProjectTaskUid };
+                    timeCard.WorkMinutes = (int)person.Jobs[i].SoldHours * 60;
+                    //Date details need figured out and added here
+                    timecardDetails[i] = timeCard;
+                }
+                else
+                {
+                    // TODO: Exception handling
+                }
+            }
+            return timecardDetails;
+        }
+
+        private PwsSaveTimeCardsRs SaveTimeCards(PwsTimecardDetail[] timeCards, PwsResourceRef user, string sessionTicket)
+        {
+            PwsSaveTimeCardsRq saveTimeCardsRq = new PwsSaveTimeCardsRq();
+            saveTimeCardsRq.SaveTimeCards = timeCards;
+            saveTimeCardsRq.SessionTicket = sessionTicket;
+            saveTimeCardsRq.StartDate = DateTime.Now; // Time details need sorted
+            saveTimeCardsRq.EndDate = DateTime.Now; // As above
+            saveTimeCardsRq.ResourceIdentity = user;
+            return pwsProjectorServices.PwsSaveTimeCards(saveTimeCardsRq);
+        }
+
+        public bool AddTimeCards(List<Person> people, string sessionTicket)
+        {
+            //Check which people are projector users
+            PwsResourceElement[] pwsUsers = GetProjectorResource(people, sessionTicket);
+            //Map together relevant users
+            Dictionary<Person, PwsResourceElement> userMap = new Dictionary<Person, PwsResourceElement>();
+            foreach (Person person in people)
+            {
+                foreach (PwsResourceElement pwsUser in pwsUsers)
+                {
+                    if (person.Name.Equals(pwsUser.ResourceDetail.ResourceDisplayName))
+                    {
+                        userMap.Add(person, pwsUser);
+                    }
+                }
+            }
+            //Create timecards for the jobs for each user and try to save
+            failedTimecards = new Dictionary<Person, List<PwsSaveTimecardResult>>();
+            foreach (KeyValuePair<Person, PwsResourceElement> keyValuePair in userMap)
+            {
+                PwsTimecardDetail[] timeCards = createTimeCards(keyValuePair.Key, keyValuePair.Value);
+                PwsSaveTimecardResult[] results = SaveTimeCards(timeCards, keyValuePair.Value.ResourceDetail, sessionTicket).TimecardResults;
+                foreach (PwsSaveTimecardResult result in results)
+                {
+                    List<PwsSaveTimecardResult> failedCards = new List<PwsSaveTimecardResult>();
+                    if (result.ErrorDetail != null)
+                    {
+                        failedCards.Add(result);
+                    }
+                    failedTimecards.Add(keyValuePair.Key, failedCards);
+                }
+            }
+            //return true if there were no failures
+            if (failedTimecards.Count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public List<Person> GetErrors()
+        {
+            return failedTimecards.Keys.ToList();
         }
     }
 }

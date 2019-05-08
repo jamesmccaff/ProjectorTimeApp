@@ -19,7 +19,7 @@ namespace TimeImportApp
         string GenerateSessionKey(IPwsProjectorServices pwsProjectorServices, string username, string password, string accountCode);
         PwsGetExpenseReportsRs GetExpenseReport(string sessionKey);
         PwsUserElement GetUserDetails(string userName, string sessionKey);
-        bool AddTimeCards(List<Person> people);
-        List<ErrorOccurance> GetErrors();
+        bool AddTimeCards(List<Person> people, string sessionTicket);
+        List<Person> GetErrors();
     }   
 }
