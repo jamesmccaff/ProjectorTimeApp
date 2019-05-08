@@ -35,6 +35,7 @@ namespace TimeImportApp
             }
             catch(Exception e)
             {
+                Console.WriteLine(e.StackTrace);
                 return false;
             }
         }
@@ -201,39 +202,85 @@ namespace TimeImportApp
             return getProjectRs.Projects[0];
         }
 
-        private PwsTimecardDetail[] createTimeCards(Person person, PwsResourceElement pwsUser)
+        private PwsTimecardDetail[] CreateTimeCards(Person person, string sessionTicket)
         {
-            PwsTimecardDetail[] timecardDetails = new PwsTimecardDetail[person.Jobs.Count];
-            for (int i = 0; i < person.Jobs.Count; i++)
+            PwsTimecardDetail[] timecardDetails = new PwsTimecardDetail[person.Jobs.Count( j => j.SoldHours > 0)];
+            int addedCards = 0;
+            foreach (Job job in person.Jobs)
             {
-                PwsProjectElement pwsProject = GetPwsProject(person.Jobs[i].Code, "");
-                if (pwsProject != null)
+                if (job.SoldHours > 0)
                 {
-                    PwsTimecardDetail timeCard = new PwsTimecardDetail();
-                    timeCard.CardStatus = "D";
-                    timeCard.ProjectIdentity = new PwsProjectRef() { ProjectUid = pwsProject.ProjectDetail.ProjectUid };
-                    timeCard.ProjectRateTypeIdentity = new PwsProjectRateTypeRef() { ProjectRateTypeUid = pwsProject.RateTypes[0].ProjectRateTypeDetail.ProjectRateTypeUid };
-                    timeCard.ProjectTaskIdentity = new PwsProjectTaskRef() { ProjectTaskUid = pwsProject.Tasks[0].ProjectTaskDetail.ProjectTaskUid };
-                    timeCard.WorkMinutes = (int)person.Jobs[i].SoldHours * 60;
-                    //Date details need figured out and added here
-                    timecardDetails[i] = timeCard;
-                }
-                else
-                {
-                    // TODO: Exception handling
+                    PwsProjectElement pwsProject = GetPwsProject(job.Code, sessionTicket);
+                    if (pwsProject != null)
+                    {
+                        PwsTimecardDetail timeCard = new PwsTimecardDetail();
+                        timeCard.CardStatus = "D";
+                        timeCard.ProjectIdentity = new PwsProjectRef() { ProjectUid = pwsProject.ProjectDetail.ProjectUid };
+                        timeCard.ProjectRateTypeIdentity = new PwsProjectRateTypeRef() { ProjectRateTypeUid = pwsProject.RateTypes[0].ProjectRateTypeDetail.ProjectRateTypeUid };
+                        timeCard.ProjectTaskIdentity = new PwsProjectTaskRef() { ProjectTaskUid = pwsProject.Tasks[0].ProjectTaskDetail.ProjectTaskUid };
+                        timeCard.WorkMinutes = (int)(job.SoldHours * 60);
+                        //Date details need figured out and added here
+                        timecardDetails[addedCards] = timeCard;
+                        addedCards++;
+                    }
+                    else
+                    {
+                        // TODO: Exception handling
+                    }
                 }
             }
             return timecardDetails;
         }
 
-        private PwsSaveTimeCardsRs SaveTimeCards(PwsTimecardDetail[] timeCards, PwsResourceRef user, string sessionTicket)
+        private PwsTimeOffCardDetail[] CreateTimeOffCards(Person person, string sessionTicket)
+        {
+            PwsTimeOffCardDetail[] pwsTimeOffCards = new PwsTimeOffCardDetail[person.Jobs.Count( j => (j.AnnualHolidayHours > 0) || (j.IllnessHours > 0))];
+            int addedCards = 0;
+            foreach (Job job in person.Jobs)
+            {
+                if (job.AnnualHolidayHours > 0)
+                {
+                    PwsTimeOffCardDetail pwsTimeOffCardDetail = new PwsTimeOffCardDetail();
+                    pwsTimeOffCardDetail.CardStatus = "D";
+                    pwsTimeOffCardDetail.WorkDate = DateTime.Now;
+                    pwsTimeOffCardDetail.WorkMinutes = (int)(job.AnnualHolidayHours * 60);
+                    pwsTimeOffCardDetail.TimeOffReasonIdentity = new PwsTimeOffReasonRef()
+                    {
+                        TimeOffReasonName = "Vacation"
+                    };
+                    pwsTimeOffCards[addedCards] = pwsTimeOffCardDetail;
+                }
+                else if (job.IllnessHours > 0)
+                {
+                    PwsTimeOffCardDetail pwsTimeOffCardDetail = new PwsTimeOffCardDetail();
+                    pwsTimeOffCardDetail.CardStatus = "D";
+                    pwsTimeOffCardDetail.WorkDate = DateTime.Now;
+                    pwsTimeOffCardDetail.WorkMinutes = (int)(job.IllnessHours * 60);
+                    pwsTimeOffCardDetail.TimeOffReasonIdentity = new PwsTimeOffReasonRef()
+                    {
+                        TimeOffReasonName = "Sick"
+                    };
+                    pwsTimeOffCards[addedCards] = pwsTimeOffCardDetail;
+                }
+            }
+            return pwsTimeOffCards;
+        }
+
+        private PwsSaveTimeCardsRs SaveTimeCards(PwsTimecardDetail[] timeCards, PwsTimeOffCardDetail[] timeOffCards, PwsResourceRef user, string sessionTicket)
         {
             PwsSaveTimeCardsRq saveTimeCardsRq = new PwsSaveTimeCardsRq();
-            saveTimeCardsRq.SaveTimeCards = timeCards;
             saveTimeCardsRq.SessionTicket = sessionTicket;
             saveTimeCardsRq.StartDate = DateTime.Now; // Time details need sorted
             saveTimeCardsRq.EndDate = DateTime.Now; // As above
             saveTimeCardsRq.ResourceIdentity = user;
+            if (timeCards.Length > 0)
+            {
+                saveTimeCardsRq.SaveTimeCards = timeCards;
+            }
+            if (timeOffCards.Length > 0)
+            {
+                saveTimeCardsRq.SaveTimeOffCards = timeOffCards;
+            }
             return pwsProjectorServices.PwsSaveTimeCards(saveTimeCardsRq);
         }
 
@@ -257,8 +304,9 @@ namespace TimeImportApp
             failedTimecards = new Dictionary<Person, List<PwsSaveTimecardResult>>();
             foreach (KeyValuePair<Person, PwsResourceElement> keyValuePair in userMap)
             {
-                PwsTimecardDetail[] timeCards = createTimeCards(keyValuePair.Key, keyValuePair.Value);
-                PwsSaveTimecardResult[] results = SaveTimeCards(timeCards, keyValuePair.Value.ResourceDetail, sessionTicket).TimecardResults;
+                PwsTimecardDetail[] timeCards = CreateTimeCards(keyValuePair.Key, sessionTicket);
+                PwsTimeOffCardDetail[] timeOffCards = CreateTimeOffCards(keyValuePair.Key, sessionTicket);
+                PwsSaveTimecardResult[] results = SaveTimeCards(timeCards, timeOffCards, keyValuePair.Value.ResourceDetail, sessionTicket).TimecardResults;
                 foreach (PwsSaveTimecardResult result in results)
                 {
                     List<PwsSaveTimecardResult> failedCards = new List<PwsSaveTimecardResult>();
