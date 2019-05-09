@@ -209,15 +209,73 @@ namespace TimeImportApp
             {
                 PwsTimecardDetail[] timeCards = CreateTimeCards(keyValuePair.Key, sessionTicket);
                 PwsTimeOffCardDetail[] timeOffCards = CreateTimeOffCards(keyValuePair.Key, sessionTicket);
-                PwsSaveTimecardResult[] results = SaveTimeCards(timeCards, timeOffCards, keyValuePair.Value.ResourceDetail, sessionTicket).TimecardResults;
+                PwsSaveTimeCardsRs saveTimeCardsRs = SaveTimeCards(timeCards, timeOffCards, keyValuePair.Value.ResourceDetail, sessionTicket);
+                PwsSaveTimecardResult[] results = saveTimeCardsRs.TimecardResults;
+                PwsSaveTimeOffCardResult[] resultsTimeOff = saveTimeCardsRs.TimeOffCardResults;
+                List<PwsSaveTimecardResult> failedCards = new List<PwsSaveTimecardResult>();
+                List<ErrorOccurance> errors = new List<ErrorOccurance>();
+                //handle any errors:
                 foreach (PwsSaveTimecardResult result in results)
                 {
-                    List<PwsSaveTimecardResult> failedCards = new List<PwsSaveTimecardResult>();
                     if (result.ErrorDetail != null)
                     {
-                        failedCards.Add(result);
+                        switch (result.ErrorDetail.ErrorNumber)
+                        {
+                            case 1:
+                                errors.Add(new ErrorOccurance()
+                                {
+                                    Error = new Error()
+                                    {
+                                        Type = ErrorType.IncorrectFormatFromComment,
+                                        ErrorID = result.ErrorDetail.ErrorNumber
+                                    },
+                                    Person = keyValuePair.Key
+                                });
+                                break;
+                            case 54282:
+                                errors.Add(new ErrorOccurance()
+                                {
+                                    Error = new Error()
+                                    {
+                                        Type = ErrorType.JobInMappingTableButNotInProjector,
+                                        ErrorID = result.ErrorDetail.ErrorNumber
+                                    },
+                                    Person = keyValuePair.Key
+                                });
+                                break;
+                            case 3:
+                                errors.Add(new ErrorOccurance()
+                                {
+                                    Error = new Error()
+                                    {
+                                        Type = ErrorType.JobNotInMappingTable,
+                                        ErrorID = result.ErrorDetail.ErrorNumber
+                                    },
+                                    Person = keyValuePair.Key
+                                });
+                                break;
+                            case 4:
+                                errors.Add(new ErrorOccurance()
+                                {
+                                    Error = new Error()
+                                    {
+                                        Type = ErrorType.JobNotOnProjectorFromComment,
+                                        ErrorID = result.ErrorDetail.ErrorNumber
+                                    },
+                                    Person = keyValuePair.Key
+                                });
+                                break;
+                        }
                     }
-                    failedTimecards.Add(keyValuePair.Key, failedCards);
+                }
+                failedTimecards.Add(keyValuePair.Key, failedCards);
+                List<PwsSaveTimeOffCardResult> failedTimeOffCards = new List<PwsSaveTimeOffCardResult>();
+                foreach (PwsSaveTimeOffCardResult result in resultsTimeOff)
+                {
+                    if (result.ErrorDetail != null)
+                    {
+                        failedTimeOffCards.Add(result);
+                    }
                 }
             }
             //return true if there were no failures
