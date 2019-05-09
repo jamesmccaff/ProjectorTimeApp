@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using TimeImportApp.Domain;
 using TimeImportApp.ProjectorWebServicesV2;
 
@@ -12,7 +13,7 @@ namespace TimeImportApp
     {
         private PwsProjectorServicesClient pwsProjectorServices;
         private PwsAuthenticateRs authenticationResponse;
-        private Dictionary<Person, List<PwsSaveTimecardResult>> failedTimecards;
+        private List<ErrorOccurance> errors = new List<ErrorOccurance>();
 
         public APIHelper()
         {
@@ -105,6 +106,20 @@ namespace TimeImportApp
             getProjectRq.ProjectIdentities = projectRefs;
             getProjectRq.SessionTicket = sessionTicket;
             PwsGetProjectRs getProjectRs = pwsProjectorServices.PwsGetProject(getProjectRq);
+            foreach (PwsMessage message in getProjectRs.Messages)
+            {
+                if (message.ErrorNumber == 105)
+                {
+                    errors.Add(new ErrorOccurance()
+                    {
+                        Error = new Error()
+                        {
+                            Type = ErrorType.JobInMappingTableButNotInProjector,
+                            ErrorID = 105
+                        }
+                    });
+                }
+            }
             return getProjectRs.Projects[0];
         }
 
@@ -116,6 +131,26 @@ namespace TimeImportApp
                 if (job.SoldHours > 0)
                 {
                     PwsProjectElement pwsProject = GetPwsProject(job.Code, sessionTicket);
+                    if (pwsProject == null)
+                    {
+                        string commentCode = CheckCommentCodeValid(job.Comment);
+                        if (commentCode != null)
+                        {
+                            pwsProject = GetPwsProject(commentCode, sessionTicket);
+                        }
+                        else
+                        {
+                            errors.Add(new ErrorOccurance()
+                            {
+                                Error = new Error()
+                                {
+                                    Type = ErrorType.IncorrectFormatFromComment,
+                                    Description = "Comment did not match Regex"
+                                },
+                                Person = person
+                            });
+                        }
+                    }
                     if (pwsProject != null)
                     {
                         PwsTimecardDetail timeCard = new PwsTimecardDetail();
@@ -129,7 +164,15 @@ namespace TimeImportApp
                     }
                     else
                     {
-                        // TODO: Exception handling
+                        errors.Add(new ErrorOccurance()
+                        {
+                            Error = new Error()
+                            {
+                                Type = ErrorType.JobNotOnProjectorFromComment,
+                                Description = "Comment valid but not on Projector"
+                            },
+                            Person = person
+                        });
                     }
                 }
             }
@@ -187,6 +230,118 @@ namespace TimeImportApp
             return pwsProjectorServices.PwsSaveTimeCards(saveTimeCardsRq);
         }
 
+        private string CheckCommentCodeValid(string code)
+        {
+            Match match = Regex.Match(code, @"^PP[0-9]{6}-[0-9]{3}$");
+            if (match.Success)
+            {
+                return match.Value;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private void GetErrorOcurrences(PwsSaveTimecardResult[] timeCardResults, PwsSaveTimeOffCardResult[] timeOffCardResults, Person person)
+        {
+            foreach (PwsSaveTimecardResult result in timeCardResults)
+            {
+                if (result.ErrorDetail != null)
+                {
+                    switch (result.ErrorDetail.ErrorNumber)
+                    {
+                        case 1:
+                            errors.Add(new ErrorOccurance()
+                            {
+                                Error = new Error()
+                                {
+                                    Type = ErrorType.IncorrectFormatFromComment,
+                                    ErrorID = result.ErrorDetail.ErrorNumber
+                                },
+                                Person = person
+                            });
+                            break;
+                        case 54282:
+                            errors.Add(new ErrorOccurance()
+                            {
+                                Error = new Error()
+                                {
+                                    Type = ErrorType.JobInMappingTableButNotInProjector,
+                                    ErrorID = result.ErrorDetail.ErrorNumber
+                                },
+                                Person = person
+                            });
+                            break;
+                        case 3:
+                            errors.Add(new ErrorOccurance()
+                            {
+                                Error = new Error()
+                                {
+                                    Type = ErrorType.JobNotInMappingTable,
+                                    ErrorID = result.ErrorDetail.ErrorNumber
+                                },
+                                Person = person
+                            });
+                            break;
+                        case 4:
+                            errors.Add(new ErrorOccurance()
+                            {
+                                Error = new Error()
+                                {
+                                    Type = ErrorType.JobNotOnProjectorFromComment,
+                                    ErrorID = result.ErrorDetail.ErrorNumber
+                                },
+                                Person = person
+                            });
+                            break;
+                        case 64335:
+                            errors.Add(new ErrorOccurance()
+                            {
+                                Error = new Error()
+                                {
+                                    Type = ErrorType.NoPermissionsToSaveTimecards,
+                                    ErrorID = result.ErrorDetail.ErrorNumber
+                                },
+                                Person = person
+                            });
+                            break;
+                    }
+                }
+            }
+            foreach (PwsSaveTimeOffCardResult result in timeOffCardResults)
+            {
+                if (result.ErrorDetail != null)
+                {
+                    switch (result.ErrorDetail.ErrorNumber)
+                    {
+                        case 1:
+                            errors.Add(new ErrorOccurance()
+                            {
+                                Error = new Error()
+                                {
+                                    Type = ErrorType.IncorrectFormatFromComment,
+                                    ErrorID = result.ErrorDetail.ErrorNumber
+                                },
+                                Person = person
+                            });
+                            break;
+                        case 64335:
+                            errors.Add(new ErrorOccurance()
+                            {
+                                Error = new Error()
+                                {
+                                    Type = ErrorType.NoPermissionsToSaveTimecards,
+                                    ErrorID = result.ErrorDetail.ErrorNumber
+                                },
+                                Person = person
+                            });
+                            break;
+                    }
+                }
+            }
+        }
+
         public bool AddTimeCards(List<Person> people, string sessionTicket)
         {
             //Check which people are projector users
@@ -204,82 +359,18 @@ namespace TimeImportApp
                 }
             }
             //Create timecards for the jobs for each user and try to save
-            failedTimecards = new Dictionary<Person, List<PwsSaveTimecardResult>>();
             foreach (KeyValuePair<Person, PwsResourceElement> keyValuePair in userMap)
             {
                 PwsTimecardDetail[] timeCards = CreateTimeCards(keyValuePair.Key, sessionTicket);
                 PwsTimeOffCardDetail[] timeOffCards = CreateTimeOffCards(keyValuePair.Key, sessionTicket);
                 PwsSaveTimeCardsRs saveTimeCardsRs = SaveTimeCards(timeCards, timeOffCards, keyValuePair.Value.ResourceDetail, sessionTicket);
-                PwsSaveTimecardResult[] results = saveTimeCardsRs.TimecardResults;
-                PwsSaveTimeOffCardResult[] resultsTimeOff = saveTimeCardsRs.TimeOffCardResults;
-                List<PwsSaveTimecardResult> failedCards = new List<PwsSaveTimecardResult>();
-                List<ErrorOccurance> errors = new List<ErrorOccurance>();
-                //handle any errors:
-                foreach (PwsSaveTimecardResult result in results)
-                {
-                    if (result.ErrorDetail != null)
-                    {
-                        switch (result.ErrorDetail.ErrorNumber)
-                        {
-                            case 1:
-                                errors.Add(new ErrorOccurance()
-                                {
-                                    Error = new Error()
-                                    {
-                                        Type = ErrorType.IncorrectFormatFromComment,
-                                        ErrorID = result.ErrorDetail.ErrorNumber
-                                    },
-                                    Person = keyValuePair.Key
-                                });
-                                break;
-                            case 54282:
-                                errors.Add(new ErrorOccurance()
-                                {
-                                    Error = new Error()
-                                    {
-                                        Type = ErrorType.JobInMappingTableButNotInProjector,
-                                        ErrorID = result.ErrorDetail.ErrorNumber
-                                    },
-                                    Person = keyValuePair.Key
-                                });
-                                break;
-                            case 3:
-                                errors.Add(new ErrorOccurance()
-                                {
-                                    Error = new Error()
-                                    {
-                                        Type = ErrorType.JobNotInMappingTable,
-                                        ErrorID = result.ErrorDetail.ErrorNumber
-                                    },
-                                    Person = keyValuePair.Key
-                                });
-                                break;
-                            case 4:
-                                errors.Add(new ErrorOccurance()
-                                {
-                                    Error = new Error()
-                                    {
-                                        Type = ErrorType.JobNotOnProjectorFromComment,
-                                        ErrorID = result.ErrorDetail.ErrorNumber
-                                    },
-                                    Person = keyValuePair.Key
-                                });
-                                break;
-                        }
-                    }
-                }
-                failedTimecards.Add(keyValuePair.Key, failedCards);
-                List<PwsSaveTimeOffCardResult> failedTimeOffCards = new List<PwsSaveTimeOffCardResult>();
-                foreach (PwsSaveTimeOffCardResult result in resultsTimeOff)
-                {
-                    if (result.ErrorDetail != null)
-                    {
-                        failedTimeOffCards.Add(result);
-                    }
-                }
+                PwsSaveTimecardResult[] timecardResults = saveTimeCardsRs.TimecardResults;
+                PwsSaveTimeOffCardResult[] timeOffCardResults = saveTimeCardsRs.TimeOffCardResults;
+                //handle any errors
+                GetErrorOcurrences(timecardResults, timeOffCardResults, keyValuePair.Key);
             }
             //return true if there were no failures
-            if (failedTimecards.Count == 0)
+            if (errors.Count == 0)
             {
                 return true;
             }
@@ -289,9 +380,9 @@ namespace TimeImportApp
             }
         }
 
-        public List<Person> GetErrors()
+        public List<ErrorOccurance> GetErrors()
         {
-            return failedTimecards.Keys.ToList();
+            return errors;
         }
     }
 }

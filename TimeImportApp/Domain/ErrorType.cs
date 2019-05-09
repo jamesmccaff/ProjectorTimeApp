@@ -11,6 +11,7 @@ namespace TimeImportApp.Domain
         IncorrectFormatFromComment=0,
         JobNotOnProjectorFromComment=1,
         JobInMappingTableButNotInProjector=2,
-        JobNotInMappingTable=3
+        JobNotInMappingTable=3,
+        NoPermissionsToSaveTimecards=4
     }
 }

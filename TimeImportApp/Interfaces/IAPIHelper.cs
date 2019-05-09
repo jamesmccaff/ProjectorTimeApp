@@ -13,6 +13,6 @@ namespace TimeImportApp
         string GetSessionTicket(string accountCode, string userName, string password);  
         bool AuthenticateUser(string accountCode, string userName, string password);
         bool AddTimeCards(List<Person> people, string sessionTicket);
-        List<Person> GetErrors();
+        List<ErrorOccurance> GetErrors();
     }   
 }
