@@ -175,6 +175,18 @@ namespace TimeImportApp
                         });
                     }
                 }
+                else if (job.UnutilisedHours > 0)
+                {
+                    PwsProjectElement pwsProject = GetPwsProject("PP002236-001", sessionTicket);
+                    PwsTimecardDetail timeCard = new PwsTimecardDetail();
+                    timeCard.CardStatus = "D";
+                    timeCard.ProjectIdentity = new PwsProjectRef() { ProjectUid = pwsProject.ProjectDetail.ProjectUid };
+                    timeCard.ProjectRateTypeIdentity = new PwsProjectRateTypeRef() { ProjectRateTypeUid = pwsProject.RateTypes[0].ProjectRateTypeDetail.ProjectRateTypeUid };
+                    timeCard.ProjectTaskIdentity = new PwsProjectTaskRef() { ProjectTaskUid = pwsProject.Tasks[0].ProjectTaskDetail.ProjectTaskUid };
+                    timeCard.WorkMinutes = (int)(job.UnutilisedHours * 60);
+                    //Date details need figured out and added here
+                    timecardDetails.Add(timeCard);
+                }
             }
             return timecardDetails.ToArray();
         }
@@ -232,7 +244,7 @@ namespace TimeImportApp
 
         private string CheckCommentCodeValid(string code)
         {
-            Match match = Regex.Match(code, @"^PP[0-9]{6}-[0-9]{3}$");
+            Match match = Regex.Match(code, @"PP[0-9]{6}-[0-9]{3}");
             if (match.Success)
             {
                 return match.Value;
