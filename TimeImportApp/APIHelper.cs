@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using TimeImportApp.Domain;
 using TimeImportApp.ProjectorWebServicesV2;
 
@@ -12,7 +13,7 @@ namespace TimeImportApp
     {
         private PwsProjectorServicesClient pwsProjectorServices;
         private PwsAuthenticateRs authenticationResponse;
-        private List<ErrorOccurance> errorOccurances;
+        private List<ErrorOccurance> errors = new List<ErrorOccurance>();
 
         public APIHelper()
         {
@@ -33,8 +34,9 @@ namespace TimeImportApp
                 //If request fails bounce out;
                 return authenticationResponse.Status == RequestStatus.Ok && authenticationResponse.SessionTicket != null;
             }
-            catch (Exception e)
+            catch(Exception e)
             {
+                Console.WriteLine(e.StackTrace);
                 return false;
             }
         }
@@ -77,241 +79,322 @@ namespace TimeImportApp
             return rs.SessionTicket;
         }
 
-        public PwsSaveTimeCardsRs SaveTimeCard(string sessionKey, PwsTimecardDetail timeCard, PwsUserElement userDetails)
+        private PwsResourceElement[] GetProjectorResource(List<Person> person, string sessionTicket)
         {
-            PwsTimecardDetail[] timeCards = { timeCard };
-            PwsSaveTimeCardsRq timeCardsRq = new PwsSaveTimeCardsRq();
-            timeCardsRq.SessionTicket = sessionKey;
-            timeCardsRq.SaveTimeCards = timeCards;
-            timeCardsRq.ResourceIdentity = userDetails.ResourceIdentity;
-            timeCardsRq.StartDate = DateTime.Parse("2019-04-24T00:00:00Z").ToUniversalTime();
-            timeCardsRq.EndDate = DateTime.Parse("2019-04-25T00:00:00Z").ToUniversalTime();
-            return pwsProjectorServices.PwsSaveTimeCards(timeCardsRq);
-        }
-
-        public PwsTimecardDetail GenerateNewTimeCard()
-        {
-            //Create a new time card - WIP
-            PwsTimecardDetail pwsTimecardDetail = new PwsTimecardDetail();
-            //For a new timecard to be valid the below must be set as a minimum
-            pwsTimecardDetail.WorkMinutes = 450;
-            pwsTimecardDetail.WorkDate = DateTime.Parse("2019-04-24T00:00:00Z").ToUniversalTime();
-            pwsTimecardDetail.CardStatus = "D";
-
-            //Also needs the below, each needing at least one of the ID types
-            PwsProjectRef pwsProjectRef = new PwsProjectRef();
-            pwsProjectRef.ProjectCode = "";
-            PwsProjectRateTypeRef pwsProjectRateTypeRef = new PwsProjectRateTypeRef();
-            pwsProjectRateTypeRef.ExternalSystemIdentifier = "";
-            PwsProjectTaskRef pwsProjectTaskRef = new PwsProjectTaskRef();
-            pwsProjectTaskRef.ExternalSystemIdentifier = "";
-            PwsProjectRoleRef pwsProjectRoleRef = new PwsProjectRoleRef();
-            pwsProjectRoleRef.ExternalSystemIdentifier = "";
-
-            pwsTimecardDetail.ProjectIdentity = pwsProjectRef;
-            pwsTimecardDetail.ProjectRateTypeIdentity = pwsProjectRateTypeRef;
-            pwsTimecardDetail.ProjectTaskIdentity = pwsProjectTaskRef;
-            pwsTimecardDetail.RoleIdentity = pwsProjectRoleRef;
-            return pwsTimecardDetail;
-        }
-
-        public int CalculateTimeOffInYearToDate(PwsGetTimeCardsRs timeCard)
-        {
-            //Iterate through time off projects and total YTD timeoff
-            PwsTimeEntryTimeOff[] pwsTimeEntryProject = timeCard.TimeEntryTimeOff;
-            int minYtd = 0;
-
-            foreach (PwsTimeEntryTimeOff timeOff in pwsTimeEntryProject)
+            PwsResourceRef[] userList = new PwsResourceRef[person.Count];
+            for (int i = 0; i < person.Count; i++)
             {
-                minYtd += timeOff.MinutesYearToDate;
-            }
-
-            return minYtd;
-        }
-
-        public PwsGetTimeCardsRs GetExistingTimeCard(string sessionKey, PwsUserElement userDetails)
-        {
-            //Create timecard request
-            PwsGetTimeCardsRq timeCardsRq = new PwsGetTimeCardsRq();
-            timeCardsRq.SessionTicket = sessionKey;
-            timeCardsRq.StartDate = DateTime.Parse("2019-04-24T00:00:00Z").ToUniversalTime();
-            timeCardsRq.EndDate = DateTime.Parse("2019-04-25T00:00:00Z").ToUniversalTime();
-            timeCardsRq.ResourceIdentity = userDetails.ResourceIdentity;
-
-            //Send request and check response status
-            return pwsProjectorServices.PwsGetTimeCards(timeCardsRq);
-        }
-
-        public string GenerateSessionKey(IPwsProjectorServices pwsProjectorServices, string username, string password, string accountCode)
-        {
-            //Authenticate user and print session key
-            Session session = new Session(ref pwsProjectorServices, accountCode, username, password);
-            string sessionKey = session.GetSessionTicket();
-            return sessionKey;
-            //Using session key create and expense report request, and print out request status
-        }
-
-        public PwsGetExpenseReportsRs GetExpenseReport(string sessionKey)
-        {
-            //Using session key create and expense report request, and print out request status
-            PwsGetExpenseReportsRq pwsGetExpenseReportsRq = new PwsGetExpenseReportsRq();
-            pwsGetExpenseReportsRq.SessionTicket = sessionKey;
-            return pwsProjectorServices.PwsGetExpenseReports(pwsGetExpenseReportsRq);
-        }
-
-        public PwsUserElement GetUserDetails(string userName, string sessionKey)
-        {
-            PwsGetUserRq getUserRq = new PwsGetUserRq();
-            getUserRq.SessionTicket = sessionKey;
-            PwsUserRef userRef = new PwsUserRef();
-            userRef.UserDisplayName = userName;
-            PwsUserRef[] userArray = new PwsUserRef[] { userRef };
-            getUserRq.UserIdentities = userArray;
-            PwsGetUserRs getUserRs = pwsProjectorServices.PwsGetUser(getUserRq);
-            return getUserRs.Users[0];
-        }
-
-        public bool AddTimeCards(List<Person> people)
-        {
-            //Filter list to return only people on projector
-            var projectorPeople = GetProjectorPeopleList(people);
-            errorOccurances.Clear();
-
-            foreach (var person in projectorPeople)
-            {
-                bool errorsExist = false;
-                //Get empty timecard
-                foreach (var job in person.Jobs)
+                userList[i] = new PwsResourceRef()
                 {
-                    if (String.IsNullOrWhiteSpace(job.Code))
+                    ResourceDisplayName = person[i].Name
+                };
+            }
+            PwsGetResourceRq getResourceRq = new PwsGetResourceRq()
+            {
+                SessionTicket = sessionTicket,
+                ResourceIdentities = userList
+            };
+            return pwsProjectorServices.PwsGetResource(getResourceRq).Resources;
+        }
+
+        private PwsProjectElement GetPwsProject(string projectCode, string sessionTicket)
+        {
+            PwsGetProjectRq getProjectRq = new PwsGetProjectRq();
+            PwsProjectRef projectRef = new PwsProjectRef();
+            projectRef.ProjectCode = projectCode;
+            PwsProjectRef[] projectRefs = { projectRef };
+            getProjectRq.ProjectIdentities = projectRefs;
+            getProjectRq.SessionTicket = sessionTicket;
+            PwsGetProjectRs getProjectRs = pwsProjectorServices.PwsGetProject(getProjectRq);
+            foreach (PwsMessage message in getProjectRs.Messages)
+            {
+                if (message.ErrorNumber == 105)
+                {
+                    errors.Add(new ErrorOccurance()
                     {
-                        switch (job.Name)
+                        Error = new Error()
                         {
-                            case "Unutilised":
-                                //Add time to projector card
-                                break;
-
-                            case "Job Not Set Up":
-                                //This is a Projector Job
-
-                                //Comment in correct format?
-                                if (CommentFormattedCorrectly(job.Comment))
-                                {
-                                    var jobFromComment = GetJobFromComment(job.Comment);
-                                    
-                                    if (IsJobOnProjector(jobFromComment.Code))
-                                    {
-                                        //Add job to timecard
-                                    }
-                                    else
-                                    {
-                                        using (var context = new ProjectorIntegrationContext())
-                                        {
-                                            var error = context.Errors.FirstOrDefault(a => a.Type == ErrorType.JobNotOnProjectorFromComment);
-                                            errorOccurances.Add(new ErrorOccurance { Error = error, Person = person, Detail = job.Comment });
-                                            errorsExist = true;
-                                        }
-                                    }
-                                }
-
-                                else
-                                {
-                                    using (var context = new ProjectorIntegrationContext())
-                                    {
-                                        var error = context.Errors.FirstOrDefault(a => a.Type == ErrorType.IncorrectFormatFromComment);
-                                        errorOccurances.Add(new ErrorOccurance { Error = error, Person = person, Detail = job.Comment });
-                                        errorsExist = true;
-                                    }
-                                }
-                                break;
-
-                            case "Annual Leave":
-                                //Add annual leave to timecard
-                                break;
-
-                            case "Training":
-                                //Add training to timecard
-                                break;
-
-                            case "Illness":
-                                //Add training to timecard
-                                break;
+                            Type = ErrorType.JobInMappingTableButNotInProjector,
+                            ErrorID = 105
                         }
+                    });
+                }
+            }
+            return getProjectRs.Projects[0];
+        }
+
+        private PwsTimecardDetail[] CreateTimeCards(Person person, string sessionTicket)
+        {
+            List<PwsTimecardDetail> timecardDetails = new List<PwsTimecardDetail>();
+            foreach (Job job in person.Jobs)
+            {
+                if (job.SoldHours > 0)
+                {
+                    PwsProjectElement pwsProject = GetPwsProject(job.Code, sessionTicket);
+                    if (pwsProject == null)
+                    {
+                        string commentCode = CheckCommentCodeValid(job.Comment);
+                        if (commentCode != null)
+                        {
+                            pwsProject = GetPwsProject(commentCode, sessionTicket);
+                        }
+                        else
+                        {
+                            errors.Add(new ErrorOccurance()
+                            {
+                                Error = new Error()
+                                {
+                                    Type = ErrorType.IncorrectFormatFromComment,
+                                    Description = "Comment did not match Regex"
+                                },
+                                Person = person
+                            });
+                        }
+                    }
+                    if (pwsProject != null)
+                    {
+                        PwsTimecardDetail timeCard = new PwsTimecardDetail();
+                        timeCard.CardStatus = "D";
+                        timeCard.ProjectIdentity = new PwsProjectRef() { ProjectUid = pwsProject.ProjectDetail.ProjectUid };
+                        timeCard.ProjectRateTypeIdentity = new PwsProjectRateTypeRef() { ProjectRateTypeUid = pwsProject.RateTypes[0].ProjectRateTypeDetail.ProjectRateTypeUid };
+                        timeCard.ProjectTaskIdentity = new PwsProjectTaskRef() { ProjectTaskUid = pwsProject.Tasks[0].ProjectTaskDetail.ProjectTaskUid };
+                        timeCard.WorkMinutes = (int)(job.SoldHours * 60);
+                        //Date details need figured out and added here
+                        timecardDetails.Add(timeCard);
                     }
                     else
                     {
-                        using(var context = new ProjectorIntegrationContext())
+                        errors.Add(new ErrorOccurance()
                         {
-                            var projectorProjects = context.SharedProjects.Where(a => String.Equals(a.MIPACProject.Code, job.Code)).ToList();
-                            if(projectorProjects.Count()==1)
+                            Error = new Error()
                             {
-                                
-                            }
-                            else
-                            {
-                                var projectFoundByName = GetProjectorProjectByName(projectorProjects, job.Code);
-
-                                if (projectFoundByName != null)
-                                {
-                                    if (IsJobOnProjector(job.Code))
-                                    {
-
-                                    }
-                                }
-                                else
-                                {
-
-                                }
-                            }
-                        }
+                                Type = ErrorType.JobNotOnProjectorFromComment,
+                                Description = "Comment valid but not on Projector"
+                            },
+                            Person = person
+                        });
                     }
                 }
-
-                if (!errorsExist)
+                else if (job.UnutilisedHours > 0)
                 {
-                    //Save/Publish Timecard
+                    PwsProjectElement pwsProject = GetPwsProject("PP002236-001", sessionTicket);
+                    PwsTimecardDetail timeCard = new PwsTimecardDetail();
+                    timeCard.CardStatus = "D";
+                    timeCard.ProjectIdentity = new PwsProjectRef() { ProjectUid = pwsProject.ProjectDetail.ProjectUid };
+                    timeCard.ProjectRateTypeIdentity = new PwsProjectRateTypeRef() { ProjectRateTypeUid = pwsProject.RateTypes[0].ProjectRateTypeDetail.ProjectRateTypeUid };
+                    timeCard.ProjectTaskIdentity = new PwsProjectTaskRef() { ProjectTaskUid = pwsProject.Tasks[0].ProjectTaskDetail.ProjectTaskUid };
+                    timeCard.WorkMinutes = (int)(job.UnutilisedHours * 60);
+                    //Date details need figured out and added here
+                    timecardDetails.Add(timeCard);
                 }
             }
-
-            return errorOccurances.Count() == 0;
+            return timecardDetails.ToArray();
         }
 
-        private ProjectorProject GetProjectorProjectByName(List<SharedProject> projectorProjects, string code)
+        private PwsTimeOffCardDetail[] CreateTimeOffCards(Person person, string sessionTicket)
         {
-            throw new NotImplementedException();
+            List<PwsTimeOffCardDetail> pwsTimeOffCards = new List<PwsTimeOffCardDetail>();
+            foreach (Job job in person.Jobs)
+            {
+                if (job.AnnualHolidayHours > 0)
+                {
+                    PwsTimeOffCardDetail pwsTimeOffCardDetail = new PwsTimeOffCardDetail();
+                    pwsTimeOffCardDetail.CardStatus = "D";
+                    pwsTimeOffCardDetail.WorkDate = DateTime.Now; //TODO: Replace with actual date data
+                    pwsTimeOffCardDetail.WorkMinutes = (int)(job.AnnualHolidayHours * 60);
+                    pwsTimeOffCardDetail.TimeOffReasonIdentity = new PwsTimeOffReasonRef()
+                    {
+                        TimeOffReasonName = "Vacation"
+                    };
+                    pwsTimeOffCards.Add(pwsTimeOffCardDetail);
+                }
+                else if (job.IllnessHours > 0)
+                {
+                    PwsTimeOffCardDetail pwsTimeOffCardDetail = new PwsTimeOffCardDetail();
+                    pwsTimeOffCardDetail.CardStatus = "D";
+                    pwsTimeOffCardDetail.WorkDate = DateTime.Now; //TODO: Replace with actual date data
+                    pwsTimeOffCardDetail.WorkMinutes = (int)(job.IllnessHours * 60);
+                    pwsTimeOffCardDetail.TimeOffReasonIdentity = new PwsTimeOffReasonRef()
+                    {
+                        TimeOffReasonName = "Sick"
+                    };
+                    pwsTimeOffCards.Add(pwsTimeOffCardDetail);
+                }
+            }
+            return pwsTimeOffCards.ToArray();
         }
 
-        private bool IsJobOnProjector(string projectorJobCode)
+        private PwsSaveTimeCardsRs SaveTimeCards(PwsTimecardDetail[] timeCards, PwsTimeOffCardDetail[] timeOffCards, PwsResourceRef user, string sessionTicket)
         {
-            //API Call: Check if job is on projector
-            return true;
+            PwsSaveTimeCardsRq saveTimeCardsRq = new PwsSaveTimeCardsRq();
+            saveTimeCardsRq.SessionTicket = sessionTicket;
+            saveTimeCardsRq.StartDate = DateTime.Now; // Time details need sorted
+            saveTimeCardsRq.EndDate = DateTime.Now; // As above
+            saveTimeCardsRq.ResourceIdentity = user;
+            if (timeCards.Length > 0)
+            {
+                saveTimeCardsRq.SaveTimeCards = timeCards;
+            }
+            if (timeOffCards.Length > 0)
+            {
+                saveTimeCardsRq.SaveTimeOffCards = timeOffCards;
+            }
+            return pwsProjectorServices.PwsSaveTimeCards(saveTimeCardsRq);
         }
 
-        private Job GetJobFromComment(string commentContainingJob)
+        private string CheckCommentCodeValid(string code)
         {
-            //Take code initially from inisde brackets
-            Job jobFromComment = new Job();
-            jobFromComment.Code=commentContainingJob.Split('(', ')')[1].Replace(" ", String.Empty);
-            jobFromComment.Name = commentContainingJob.Split('(').First().Trim();
-            return jobFromComment;
+            Match match = Regex.Match(code, @"PP[0-9]{6}-[0-9]{3}");
+            if (match.Success)
+            {
+                return match.Value;
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        private bool CommentFormattedCorrectly(string commentContainingJob)
+        private void GetErrorOcurrences(PwsSaveTimecardResult[] timeCardResults, PwsSaveTimeOffCardResult[] timeOffCardResults, Person person)
         {
-            bool isJobNamePresent = !String.IsNullOrWhiteSpace(commentContainingJob.Split('(').First());
-            bool isJobCodePresent = !String.IsNullOrWhiteSpace(commentContainingJob.Split('(', ')')[1].Replace(" ", String.Empty));
-            return isJobCodePresent && isJobNamePresent;
+            foreach (PwsSaveTimecardResult result in timeCardResults)
+            {
+                if (result.ErrorDetail != null)
+                {
+                    switch (result.ErrorDetail.ErrorNumber)
+                    {
+                        case 1:
+                            errors.Add(new ErrorOccurance()
+                            {
+                                Error = new Error()
+                                {
+                                    Type = ErrorType.IncorrectFormatFromComment,
+                                    ErrorID = result.ErrorDetail.ErrorNumber
+                                },
+                                Person = person
+                            });
+                            break;
+                        case 54282:
+                            errors.Add(new ErrorOccurance()
+                            {
+                                Error = new Error()
+                                {
+                                    Type = ErrorType.JobInMappingTableButNotInProjector,
+                                    ErrorID = result.ErrorDetail.ErrorNumber
+                                },
+                                Person = person
+                            });
+                            break;
+                        case 3:
+                            errors.Add(new ErrorOccurance()
+                            {
+                                Error = new Error()
+                                {
+                                    Type = ErrorType.JobNotInMappingTable,
+                                    ErrorID = result.ErrorDetail.ErrorNumber
+                                },
+                                Person = person
+                            });
+                            break;
+                        case 4:
+                            errors.Add(new ErrorOccurance()
+                            {
+                                Error = new Error()
+                                {
+                                    Type = ErrorType.JobNotOnProjectorFromComment,
+                                    ErrorID = result.ErrorDetail.ErrorNumber
+                                },
+                                Person = person
+                            });
+                            break;
+                        case 64335:
+                            errors.Add(new ErrorOccurance()
+                            {
+                                Error = new Error()
+                                {
+                                    Type = ErrorType.NoPermissionsToSaveTimecards,
+                                    ErrorID = result.ErrorDetail.ErrorNumber
+                                },
+                                Person = person
+                            });
+                            break;
+                    }
+                }
+            }
+            foreach (PwsSaveTimeOffCardResult result in timeOffCardResults)
+            {
+                if (result.ErrorDetail != null)
+                {
+                    switch (result.ErrorDetail.ErrorNumber)
+                    {
+                        case 1:
+                            errors.Add(new ErrorOccurance()
+                            {
+                                Error = new Error()
+                                {
+                                    Type = ErrorType.IncorrectFormatFromComment,
+                                    ErrorID = result.ErrorDetail.ErrorNumber
+                                },
+                                Person = person
+                            });
+                            break;
+                        case 64335:
+                            errors.Add(new ErrorOccurance()
+                            {
+                                Error = new Error()
+                                {
+                                    Type = ErrorType.NoPermissionsToSaveTimecards,
+                                    ErrorID = result.ErrorDetail.ErrorNumber
+                                },
+                                Person = person
+                            });
+                            break;
+                    }
+                }
+            }
         }
 
-        private List<Person> GetProjectorPeopleList(List<Person> people)
+        public bool AddTimeCards(List<Person> people, string sessionTicket)
         {
-            //JAMES McDermott -API Call
-            return null;
+            //Check which people are projector users
+            PwsResourceElement[] pwsUsers = GetProjectorResource(people, sessionTicket);
+            //Map together relevant users, could be improved
+            Dictionary<Person, PwsResourceElement> userMap = new Dictionary<Person, PwsResourceElement>();
+            foreach (Person person in people)
+            {
+                foreach (PwsResourceElement pwsUser in pwsUsers)
+                {
+                    if (person.Name.Equals(pwsUser.ResourceDetail.ResourceDisplayName))
+                    {
+                        userMap.Add(person, pwsUser);
+                    }
+                }
+            }
+            //Create timecards for the jobs for each user and try to save
+            foreach (KeyValuePair<Person, PwsResourceElement> keyValuePair in userMap)
+            {
+                PwsTimecardDetail[] timeCards = CreateTimeCards(keyValuePair.Key, sessionTicket);
+                PwsTimeOffCardDetail[] timeOffCards = CreateTimeOffCards(keyValuePair.Key, sessionTicket);
+                PwsSaveTimeCardsRs saveTimeCardsRs = SaveTimeCards(timeCards, timeOffCards, keyValuePair.Value.ResourceDetail, sessionTicket);
+                PwsSaveTimecardResult[] timecardResults = saveTimeCardsRs.TimecardResults;
+                PwsSaveTimeOffCardResult[] timeOffCardResults = saveTimeCardsRs.TimeOffCardResults;
+                //handle any errors
+                GetErrorOcurrences(timecardResults, timeOffCardResults, keyValuePair.Key);
+            }
+            //return true if there were no failures
+            if (errors.Count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public List<ErrorOccurance> GetErrors()
         {
-            return errorOccurances;
+            return errors;
         }
     }
 }

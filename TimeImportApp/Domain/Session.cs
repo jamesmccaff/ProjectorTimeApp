@@ -59,5 +59,13 @@ namespace TimeImportApp
 
             return authenticationResponse.SessionTicket;
         }
+
+        public void CloseSession(string sessionTicket)
+        {
+            PwsUnauthenticateRs pwsUnauthenticateRs = psc.PwsUnauthenticate(new PwsUnauthenticateRq()
+            {
+                SessionTicket = sessionTicket
+            });
+        }
     }
 }
