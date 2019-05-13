@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TimeImportApp.Domain;
 
 namespace TimeImportApp.Views
 {
@@ -79,7 +80,7 @@ namespace TimeImportApp.Views
 
                     if (timecardsAddedSuccessfuly)
                     {
-
+                        NavigationService.Navigate(new CompletedPage(BatchState.CompletedSuccesfully));
                     }
                     else
                     {
@@ -108,6 +109,11 @@ namespace TimeImportApp.Views
                     }
                 }
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ProjectPage());
         }
     }
 }

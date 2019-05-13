@@ -12,6 +12,7 @@ namespace TimeImportApp
     {
         private PwsProjectorServicesClient pwsProjectorServices;
         private PwsAuthenticateRs authenticationResponse;
+        private List<ErrorOccurance> errorOccurances;
 
         public APIHelper()
         {
@@ -32,7 +33,7 @@ namespace TimeImportApp
                 //If request fails bounce out;
                 return authenticationResponse.Status == RequestStatus.Ok && authenticationResponse.SessionTicket != null;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return false;
             }
@@ -172,12 +173,145 @@ namespace TimeImportApp
 
         public bool AddTimeCards(List<Person> people)
         {
+            //Filter list to return only people on projector
+            var projectorPeople = GetProjectorPeopleList(people);
+            errorOccurances.Clear();
+
+            foreach (var person in projectorPeople)
+            {
+                bool errorsExist = false;
+                //Get empty timecard
+                foreach (var job in person.Jobs)
+                {
+                    if (String.IsNullOrWhiteSpace(job.Code))
+                    {
+                        switch (job.Name)
+                        {
+                            case "Unutilised":
+                                //Add time to projector card
+                                break;
+
+                            case "Job Not Set Up":
+                                //This is a Projector Job
+
+                                //Comment in correct format?
+                                if (CommentFormattedCorrectly(job.Comment))
+                                {
+                                    var jobFromComment = GetJobFromComment(job.Comment);
+                                    
+                                    if (IsJobOnProjector(jobFromComment.Code))
+                                    {
+                                        //Add job to timecard
+                                    }
+                                    else
+                                    {
+                                        using (var context = new ProjectorIntegrationContext())
+                                        {
+                                            var error = context.Errors.FirstOrDefault(a => a.Type == ErrorType.JobNotOnProjectorFromComment);
+                                            errorOccurances.Add(new ErrorOccurance { Error = error, Person = person, Detail = job.Comment });
+                                            errorsExist = true;
+                                        }
+                                    }
+                                }
+
+                                else
+                                {
+                                    using (var context = new ProjectorIntegrationContext())
+                                    {
+                                        var error = context.Errors.FirstOrDefault(a => a.Type == ErrorType.IncorrectFormatFromComment);
+                                        errorOccurances.Add(new ErrorOccurance { Error = error, Person = person, Detail = job.Comment });
+                                        errorsExist = true;
+                                    }
+                                }
+                                break;
+
+                            case "Annual Leave":
+                                //Add annual leave to timecard
+                                break;
+
+                            case "Training":
+                                //Add training to timecard
+                                break;
+
+                            case "Illness":
+                                //Add training to timecard
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        using(var context = new ProjectorIntegrationContext())
+                        {
+                            var projectorProjects = context.SharedProjects.Where(a => String.Equals(a.MIPACProject.Code, job.Code)).ToList();
+                            if(projectorProjects.Count()==1)
+                            {
+                                
+                            }
+                            else
+                            {
+                                var projectFoundByName = GetProjectorProjectByName(projectorProjects, job.Code);
+
+                                if (projectFoundByName != null)
+                                {
+                                    if (IsJobOnProjector(job.Code))
+                                    {
+
+                                    }
+                                }
+                                else
+                                {
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (!errorsExist)
+                {
+                    //Save/Publish Timecard
+                }
+            }
+
+            return errorOccurances.Count() == 0;
+        }
+
+        private ProjectorProject GetProjectorProjectByName(List<SharedProject> projectorProjects, string code)
+        {
             throw new NotImplementedException();
+        }
+
+        private bool IsJobOnProjector(string projectorJobCode)
+        {
+            //API Call: Check if job is on projector
+            return true;
+        }
+
+        private Job GetJobFromComment(string commentContainingJob)
+        {
+            //Take code initially from inisde brackets
+            Job jobFromComment = new Job();
+            jobFromComment.Code=commentContainingJob.Split('(', ')')[1].Replace(" ", String.Empty);
+            jobFromComment.Name = commentContainingJob.Split('(').First().Trim();
+            return jobFromComment;
+        }
+
+        private bool CommentFormattedCorrectly(string commentContainingJob)
+        {
+            bool isJobNamePresent = !String.IsNullOrWhiteSpace(commentContainingJob.Split('(').First());
+            bool isJobCodePresent = !String.IsNullOrWhiteSpace(commentContainingJob.Split('(', ')')[1].Replace(" ", String.Empty));
+            return isJobCodePresent && isJobNamePresent;
+        }
+
+        private List<Person> GetProjectorPeopleList(List<Person> people)
+        {
+            //JAMES McDermott -API Call
+            return null;
         }
 
         public List<ErrorOccurance> GetErrors()
         {
-            throw new NotImplementedException();
+            return errorOccurances;
         }
     }
 }

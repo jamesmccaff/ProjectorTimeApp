@@ -12,7 +12,7 @@ namespace TimeImportApp
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity), Key]
         public int SharedProjectID { get; set; }
-        public MIPACProject MIPACProject { get; set; }
-        public ProjectorProject ProjectorProject { get; set; }
+        public virtual MIPACProject MIPACProject { get; set; }
+        public virtual ProjectorProject ProjectorProject { get; set; }
     }
 }

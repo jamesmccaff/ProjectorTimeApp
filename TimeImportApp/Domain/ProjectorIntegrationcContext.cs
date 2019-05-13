@@ -17,6 +17,7 @@ namespace TimeImportApp
 
         public ProjectorIntegrationContext() : base(nameOrConnectionString: "Default")
         {
+            this.Configuration.LazyLoadingEnabled = true;
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

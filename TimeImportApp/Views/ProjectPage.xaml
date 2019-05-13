@@ -1,0 +1,119 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:TimeImportApp.Views" xmlns:TimeImportApp="clr-namespace:TimeImportApp" x:Class="TimeImportApp.Views.ProjectPage"
+      Loaded="Page_Loaded"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProjectPage">
+
+    <Page.Resources>
+        <ResourceDictionary  Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".1*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Gray" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Gray" Grid.RowSpan="1" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="1">
+            <Grid>
+                <DataGrid x:Name="projectorProjectDataGrid" Visibility="Visible"  Focusable="False"  IsReadOnly="True" RowHeaderWidth="0"  HorizontalAlignment="Center" BorderBrush="White" VerticalAlignment="Center" AutoGenerateColumns="False">
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="Gray" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="FontSize" Value="16"/>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="MIPACcodeColumn" Width="250" Header="MIPAC Name" Binding="{Binding MIPACProjectName}"/>
+                    <DataGridTextColumn x:Name="MIPACnameColumn" Width="120" Header="MIPAC Code" Binding="{Binding MIPACProjectCode}"/>
+                    <DataGridTextColumn x:Name="ProjectorcodeColumn" Width="250" Header="Projector Name" Binding="{Binding ProjectorProjectName}"/>
+                    <DataGridTextColumn x:Name="ProjectornameColumn" Width="120" Header="Projector Code" Binding="{Binding ProjectorProjectCode}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+                <Grid Grid.Row="0" x:Name="addProjectGrid" Visibility="Collapsed">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="1.2*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".7*"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="MIPAC Project Name:" FontSize="18" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0"  Padding="0,0,20,0"/>
+                    <TextBlock Text="MIPAC Project Code:" FontSize="18" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1"  Padding="0,0,20,0"/>
+                    <TextBlock Text="Projector Project Name:" FontSize="18" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2"  Padding="0,0,20,0"/>
+                    <TextBlock Text="Projector Project Code:" FontSize="18" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3"  Padding="0,0,20,0"/>
+                    <TextBox x:Name="mipacNameBox" Width="250" FontSize="18" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" Margin="20,0,0,0"/>
+                    <TextBox x:Name="mipacCodeTextBox" Width="250" FontSize="18" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1" Margin="20,0,0,0"/>
+                    <TextBox x:Name="projectorNameBox" Width="250" FontSize="18" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" Margin="20,0,0,0"/>
+                    <TextBox x:Name="projectorCodeTextBox" Width="250" FontSize="18" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" Margin="20,0,0,0"/>
+                    <Grid Grid.Row="4" Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="errorMessageLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontSize="16"/>
+                        <Button Style="{StaticResource MaterialDesignRaisedButton}" Grid.Row="1" Height="30" Width="120" Content="Save Project" Click="Button_Click_1"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="0">
+            <TextBlock x:Name="projectTextblock" Text="Projects"  Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Center" FontSize="35"/>
+            <Button Width="120" Height="40" Margin="30,0,0,0" x:Name="addProjectButton" Content="Add Project" Style="{StaticResource MaterialDesignRaisedButton}" Click="Button_Click"></Button>
+            <TextBlock x:Name="addProjectTextblock" Text="Add Project" Visibility="Collapsed" Foreground="White" HorizontalAlignment="Left"  VerticalAlignment="Center" FontSize="35"/>
+        </StackPanel>
+
+        <!--<DataGrid x:Name="dataGrid" AutoGenerateColumns="False"  ItemsSource="{Binding SharedProjects}" Grid.Column="1" Grid.Row="1"  Background="Transparent" RowBackground="Transparent" HorizontalAlignment="Center"  VerticalAlignment="Top" >
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="MIPAC Name" Width="150" Binding="{Binding MIPACProject.Name}"/>
+                <DataGridTextColumn Header="MIPAC Code"        Width="150"       Binding="{Binding MIPACProject.Code}"   />
+                <DataGridTextColumn Header="Projector Name" Width="150" Binding="{Binding ProjectorProject.Name}"/>
+                <DataGridTextColumn Header="Projector Code" Width="150" Binding="{Binding ProjectorProject.Code}"/>
+                <DataGridCheckBoxColumn Width="30"/>
+            </DataGrid.Columns>
+        </DataGrid>-->
+        <Button x:Name="backButton" HorizontalAlignment="Left" Grid.Row="0" Background="Transparent" BorderBrush="Transparent"  VerticalAlignment="Top" Margin="12,12,0,0" Click="BackButton_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="ContentTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <Grid Background="Transparent" Width="48" Height="48">
+                                    <Border Background="Transparent">
+                                        <Viewbox Width="48" Height="48">
+                                            <Canvas Width="24" Height="24" >
+                                                <Path Data="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" Fill="White" />
+                                            </Canvas>
+                                        </Viewbox>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+
+
+    </Grid>
+</Page>

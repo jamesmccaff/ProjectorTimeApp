@@ -3,11 +3,16 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:TimeImportApp"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="InputPage">
 
+    <Page.Resources>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+    </Page.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -30,9 +35,10 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.ColumnSpan="2" Text="Projector Report Import Application" FontSize="30" Foreground="White" HorizontalAlignment="Stretch" Padding="20,0,0,0" VerticalAlignment="Center"/>
+            <TextBlock Grid.ColumnSpan="1" Text="Projector Importer" FontSize="30" Foreground="White" HorizontalAlignment="Stretch" Padding="20,0,0,0" VerticalAlignment="Center"/>
+            <Button    Style="{StaticResource MaterialDesignRaisedButton}" Content="Projects"   Grid.Column="1" Width="100" Height="30" Margin="0,0,170,0" Click="Button_Click_1"></Button>
             <TextBlock Text="Select Report (.csv):" FontSize="18" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1"  Padding="0,0,20,0"/>
-            <Button x:Name="selectFileButton" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Margin="200,0,0,0" Height="30" Width="90" Content="Select File" Click="SelectFileButton_Click">
+            <Button x:Name="selectFileButton" Style="{StaticResource MaterialDesignRaisedButton}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Margin="200,0,0,0" Height="30" Width="100" Content="Select File" Click="SelectFileButton_Click">
             </Button>
             <TextBlock Text="Username:" FontSize="18" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2"  Padding="0,0,20,0"/>
             <TextBlock Text="Password:" FontSize="18" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3"  Padding="0,0,20,0"/>
@@ -49,7 +55,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock x:Name="errorMessageLabel" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontSize="16"/>
-            <Button Content="Submit" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50" Width="120" Click="Button_Click"/>
+            <Button Content="Submit" Grid.Row="2" Style="{StaticResource MaterialDesignRaisedButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="120" Click="Button_Click"/>
         </Grid>
     </Grid>
 </Page>

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace TimeImportApp.Domain
 {
-    public class ErrorOccurance
+    public enum BatchState
     {
-        public Error Error { get; set; }
-        public Person Person { get; set; }
-        public string Detail { get; set; }
+        CompletedSuccesfully=0,
+        CompletedWithErrors=1,
+        Failed=2
     }
 }

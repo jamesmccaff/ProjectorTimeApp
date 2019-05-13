@@ -118,11 +118,15 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="DatabaseHelper.cs" />
+    <Compile Include="Domain\BatchState.cs" />
     <Compile Include="Domain\Error.cs" />
     <Compile Include="Domain\ErrorOccurance.cs" />
     <Compile Include="Domain\ErrorType.cs" />
     <Compile Include="Domain\SeedUtility.cs" />
     <Compile Include="Interfaces\ISeedUtility.cs" />
+    <Compile Include="Views\CompletedPage.xaml.cs">
+      <DependentUpon>CompletedPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\InputPage.xaml.cs">
       <DependentUpon>InputPage.xaml</DependentUpon>
     </Compile>
@@ -137,7 +141,14 @@
     <Compile Include="Domain\ProjectorProject.cs" />
     <Compile Include="Domain\Session.cs" />
     <Compile Include="Domain\SharedProject.cs" />
+    <Compile Include="Views\ProjectPage.xaml.cs">
+      <DependentUpon>ProjectPage.xaml</DependentUpon>
+    </Compile>
     <Page Include="Dictionary1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CompletedPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,6 +177,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\ProcessingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProjectPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1011,6 +1026,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\MIPACProject.datasource" />
+    <None Include="Properties\DataSources\ProjectorProject.datasource" />
+    <None Include="Properties\DataSources\SharedProject.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

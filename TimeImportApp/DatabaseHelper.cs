@@ -19,9 +19,12 @@ namespace TimeImportApp
             seedUtility = new SeedUtility();
             using (var context = new ProjectorIntegrationContext())
             {
-                Database.SetInitializer(new CreateDatabaseIfNotExists<ProjectorIntegrationContext>());
-                context.Database.Initialize(true);
-                seedUtility.SeedDatabase(context);
+                if (!context.Database.Exists())
+                {
+                    Database.SetInitializer(new CreateDatabaseIfNotExists<ProjectorIntegrationContext>());
+                    context.Database.Initialize(true);
+                    seedUtility.SeedDatabase(context);
+                }
             }
         }
     }
