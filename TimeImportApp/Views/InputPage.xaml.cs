@@ -66,7 +66,8 @@ namespace TimeImportApp.Views
             }
             else
             {
-                if (apiHelper.GetSessionTicket(accountCodeTextBox.Text, usernameTextBox.Text, passwordTextBox.Password) == null)
+                string sessionTicket = apiHelper.GetSessionTicket(accountCodeTextBox.Text, usernameTextBox.Text, passwordTextBox.Password);
+                if (sessionTicket == null)
                 {
                     errorMessageLabel.Text = "Authentication Unsuccessful: Please check login details.";
                 }
@@ -76,7 +77,7 @@ namespace TimeImportApp.Views
                     //Process the CSV File
                     NavigationService.Navigate(new ProcessingPage());
                     var people=csvHelper.ParseReportToObjects(filePath);
-                    bool timecardsAddedSuccessfuly = apiHelper.AddTimeCards(people);
+                    bool timecardsAddedSuccessfuly = apiHelper.AddTimeCards(people, sessionTicket);
 
                     if (timecardsAddedSuccessfuly)
                     {
